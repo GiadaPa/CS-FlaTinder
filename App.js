@@ -1,13 +1,14 @@
 import React from 'react'
-import { Image } from 'react-native'
+import {Image} from 'react-native'
 import {createAppContainer, createSwitchNavigator} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 import {createBottomTabNavigator} from 'react-navigation-tabs'
 
-import { Provider } from 'unstated'
+import {Provider} from 'unstated'
 
 import Welcome_Screen from './screens/Welcome_Screen'
 import Login_Screen from './screens/Login_Screen'
+import SignUp_Screen from './screens/SignUp_Screen'
 import Questionnaire_Screen from './screens/Questionnaire_Screen'
 import Home_Screen from './screens/Home_Screen'
 import Personal_Profile_Screen  from './screens/Personal_Profile_Screen'
@@ -21,6 +22,7 @@ const Welcome = createStackNavigator(
   {
     Welcome: Welcome_Screen,
     Login: Login_Screen,
+	SignUp: SignUp_Screen,
     Questionnaire: Questionnaire_Screen,
   },
   {
@@ -116,7 +118,7 @@ const MainApp = createBottomTabNavigator(
   }
 )
 
-const Route = createSwitchNavigator(
+const Route = createSwitchNavigator( 
   {
     Welcome: Welcome,
     MainApp: MainApp,
@@ -136,7 +138,7 @@ const AppContainer = createAppContainer(Route)
 
 const App = props => (
   <Provider>
-    <AppContainer />
+    <AppContainer/>
   </Provider>
 )
 
