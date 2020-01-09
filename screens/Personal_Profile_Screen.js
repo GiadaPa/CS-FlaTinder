@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
- 
+import { View, Text, TouchableOpacity, Button } from 'react-native';
+
+import styles from '../style'
+
 const Personal_Profile_Screen = props => {
  
     return (
@@ -19,16 +21,6 @@ Personal_Profile_Screen.navigationOptions = ({ navigation }) => ({
           onPress = {() => navigation.navigate('Settings')}
       />
   )
-})
-
-const styles = StyleSheet.create({
-  MainContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5fcff',
-    padding: 11
-  },
 })
 
 export default Personal_Profile_Screen

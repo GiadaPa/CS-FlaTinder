@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, View, TouchableHighlight, StyleSheet } from 'react-native';
- 
+import { Text, View, TouchableHighlight} from 'react-native';
+
+import styles from '../style'
+
 const Flats_Screen = props => {
 
   return (
@@ -13,16 +15,5 @@ const Flats_Screen = props => {
 Flats_Screen.navigationOptions = ({navigation}) => ({
   title: "Flats search"
 })
- 
-const styles = StyleSheet.create({
- 
-  MainContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5fcff',
-    padding: 11
-  }, 
-});
 
 export default Flats_Screen
