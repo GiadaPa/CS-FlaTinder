@@ -1,19 +1,20 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 import styles from '../style'
+import Personal_Profile_Component from '../UIComponents/Personal_Profile_Component'
 
 const Personal_Profile_Screen = props => {
  
     return (
       <View style={styles.MainContainer}>
-        <Text style={{ marginTop: 40, fontSize: 20 }}>Personal profile Screen</Text>
+        <Personal_Profile_Component />
       </View>
     )
 }
 
 Personal_Profile_Screen.navigationOptions = ({ navigation }) => ({
-  title: "Personal profile",
+  title: "My profile",
   headerRight: () => (
       <Button
           color = 'white'
