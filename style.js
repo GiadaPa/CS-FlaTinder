@@ -17,6 +17,21 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f5fcff',
 		padding: 11
 	},
+	questionnaireView: {
+		alignItems: 'stretch',
+		marginBottom: 10,
+		marginTop: 10,
+	},
+	text: {
+		fontSize: 17,
+	},
+	row: {
+		marginLeft: 10,
+		marginRight: 10,
+		flexDirection: 'row', 
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
 	titleText: {
 		fontWeight: 'bold',
 		fontSize: 30,
@@ -40,9 +55,7 @@ const styles = StyleSheet.create({
 		borderWidth:1,
 		height:40,
 		width: 300,
-		marginTop: 5,
-		marginRight:20,
-		marginBottom: 20,
+		margin: 5,
 	},
 	textQuestions: {
 		fontWeight: 'bold',
