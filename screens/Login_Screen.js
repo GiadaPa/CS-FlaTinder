@@ -13,18 +13,22 @@ const Login_Screen = props => {
 				(
 				
 					<View style={styles.MainContainer}>
-					<Text style = {styles.text}>Insert username</Text>
-					<TextInput
-						style = {styles.textInput}
-						onChangeText = {(username) => container.setTempUsername(username)}
-					>
-					</TextInput>
-					<Text style = {styles.text}>Insert password</Text>
-					<TextInput
-						style = {styles.textInput}
-						onChangeText = {(password) => container.setTempPassword(password)}
-					>
-					</TextInput>
+						<View style = {styles.questionnaireView}>
+							<Text style = {styles.text}>Insert username</Text>
+							<TextInput
+								style = {styles.textInput}
+								onChangeText = {(username) => container.setTempUsername(username)}
+							>
+							</TextInput>
+						</View>
+						<View style = {styles.questionnaireView}>
+							<Text style = {styles.text}>Insert password</Text>
+							<TextInput
+								style = {styles.textInput}
+								onChangeText = {(password) => container.setTempPassword(password)}
+							>
+							</TextInput>
+						</View>
 					<TouchableOpacity
 						style={styles.button}
 						onPress = {() => 
