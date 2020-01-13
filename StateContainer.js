@@ -1,10 +1,11 @@
 //StateContainer.js
 import {PersistContainer} from './PersistContainer'
-import {AsyncStorage} from 'react-native'
+import {AsyncStorage, Alert} from 'react-native'
 
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
+import * as MailComposer from 'expo-mail-composer';
 
 export default class StateContainer extends PersistContainer{
 	constructor(props){
@@ -145,7 +146,21 @@ export default class StateContainer extends PersistContainer{
 			}
 			await this.setState({users: updatedUsers})
 		}
-	};
+	}
+
+	sendEmail = () => {
+		MailComposer.composeAsync({
+			recipients:["giada-palma@hotmail.it"],
+			subject:"Request for flat sharing",
+			})
+			console.log("hey")
+	}
+
+	likeAlert = () => {
+		Alert.alert(
+			'Liked profile'
+		)
+	}
 	
 	login = () => {
 		for(i=0; i<this.state.users.length; i++)
@@ -158,7 +173,12 @@ export default class StateContainer extends PersistContainer{
 		}
 		return false
 	}
-	
+
+/*	logout = () => {
+		this.setState({loggedInUser:0})
+		console.log(loggedInUser)
+	}
+*/	
 	signup = () => { //check if username already exists
 		for(i=0; i<this.state.users.length; i++)
 		{
