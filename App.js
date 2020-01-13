@@ -14,15 +14,15 @@ import Home_Screen from './screens/Home_Screen'
 import Personal_Profile_Screen  from './screens/Personal_Profile_Screen'
 import Settings_Screen  from './screens/Settings_Screen'
 import Search_Screen from './screens/Search_Screen'
-import Flats_Screen from './screens/Flats_Screen'
-import Flatmates_Screen from './screens/Flatmates_Screen'
+import EditInfo_Screen from './screens/EditInfo_Screen'
+import EditSearchConst_Screen from './screens/EditSearchConst_Screen'
 
 
 const Welcome = createStackNavigator(
   {
     Welcome: Welcome_Screen,
     Login: Login_Screen,
-	SignUp: SignUp_Screen,
+	  SignUp: SignUp_Screen,
     Questionnaire: Questionnaire_Screen,
   },
   {
@@ -53,6 +53,8 @@ const PersonalProfileTab = createStackNavigator(
 {
   PersonalProfile: Personal_Profile_Screen,
   Settings: Settings_Screen,
+  EditInfo: EditInfo_Screen,
+  EditSearchConst: EditSearchConst_Screen,
 },
 {
   defaultNavigationOptions: {
@@ -67,8 +69,6 @@ const PersonalProfileTab = createStackNavigator(
 const SearchTab = createStackNavigator(
   {
     Search: Search_Screen,
-    Flats: Flats_Screen,
-    Flatmates: Flatmates_Screen,
   },
   {
     defaultNavigationOptions: {
