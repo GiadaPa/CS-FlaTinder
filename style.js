@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 		height: 35,
 		justifyContent: 'center',
 		backgroundColor:'#ff4d4d',
-    },
+	},
     buttonText: {
 		color: 'white',
 		fontSize: 20,
@@ -107,6 +107,30 @@ const styles = StyleSheet.create({
 	},
 	infoText:{
 		fontSize: 20,
+	},
+    edittext: {
+		fontSize:20,
+		color: 'white'
+	},
+	buttonView:{
+		flexDirection: 'row', 
+		justifyContent: 'space-between',
+		alignItems: 'stretch',
+	},
+	interestedbutton:{
+		borderRadius: 5,
+		height: 35,
+		marginLeft: 20,
+		justifyContent: 'center',
+		backgroundColor:'lightgreen',
+	},
+	notintbutton:{
+		borderRadius: 5,
+		height: 35,
+		marginLeft: 20,
+		justifyContent: 'center',
+		backgroundColor:'#ff6666',
+
 	},
 }); 
 
