@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView } from 'react-native';
-import { Avatar, Divider } from 'react-native-elements';
+import { Text, View } from 'react-native';
+import { Avatar } from 'react-native-elements';
 
 import styles from '../style'
 
