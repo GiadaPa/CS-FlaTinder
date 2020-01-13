@@ -1,17 +1,33 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import {Subscribe} from 'unstated'
+
+import StateContainer from '../StateContainer'
 
 import styles from '../style'
+
+import Settings_Component from '../UIComponents/Settings_Component'
 
 const Settings_Screen = props => {
 
   return (
-    <View style={styles.MainContainer}>
-      <Text style={{ marginTop: 40, fontSize: 20 }}>Settings Screen</Text>
-    </View>
-  )
+    <Subscribe to = {[StateContainer]}>
+    {
+      container =>
+      (
+        <View style={styles.MainContainer}>
+          <Settings_Component 
+            logout = {() => container.logout()}
+            navigateOut = {() => props.navigation.navigate("Login")} 
+            navigateEditInfo = {() => props.navigation.navigate("EditInfo")}
+            navigateEditSearchConst = {() => props.navigation.navigate("EditSearchConst")}
+            />
+        </View>
+        )
+			}
+		</Subscribe>
+    )
 }
-
 Settings_Screen.navigationOptions = ({navigation}) => ({
   title: "Settings"
 })
