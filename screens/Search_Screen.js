@@ -1,33 +1,33 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
+import { View } from 'react-native';
+import {Subscribe} from 'unstated'
+
+import StateContainer from '../StateContainer'
+import Search_Component from '../UIComponents/Search_Component'
 
 import styles from '../style'
 
 const Search_Screen = props => {
 
   return (
-      <View style={styles.MainContainer}>
-
-        <Image source={require('../assets/flats.jpg')} style={{ maxHeight:200, maxWidth: 350}}/>
-        <TouchableHighlight
-        onPress={() => props.navigation.navigate('Flats')}
-        style={styles.button}>
-        <Text style={styles.buttonText}>SEARCH FLATS</Text>
-        </TouchableHighlight> 
-        
-        <Image source={require('../assets/flatmates.jpg')} style={{ maxHeight:200, maxWidth: 350}}/> 
-        <TouchableHighlight
-          onPress={() => props.navigation.navigate('Flatmates')}     
-          style={styles.button}>
-          <Text style={styles.buttonText}>SEARCH FLATMATES</Text>
-        </TouchableHighlight> 
-
-      </View>
+    <Subscribe to = {[StateContainer]}>
+    {
+      container =>
+      (
+        <View style={styles.MainContainer}>
+          <Search_Component 
+            sendEmail = {() => container.sendEmail()}
+            likeAlert = {() => container.likeAlert()}
+            />
+        </View>
+      )
+    }
+  </Subscribe>
   )
 }
 
 Search_Screen.navigationOptions = ({navigation}) => ({
-  title: "Search"
+  title: "Search flatmates"
 })
 
 export default Search_Screen
