@@ -36,7 +36,8 @@ const Settings_Component = props => (
         <Button 
             color = 'red'
             title = "LOG OUT"
-            onPress = {props.navigateOut}/>
+            onPress = {props.navigateOut}
+		/>
     </View>
 )
 

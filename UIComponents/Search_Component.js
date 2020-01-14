@@ -5,18 +5,16 @@ import styles from '../style'
 
 
 const Search_Component = props => (
-    
     <View style={styles.MainContainer}>
         <View style = {styles.MainContainerProfile}>
             <Image 
-                source= {require('../assets/flatmates.jpg')}
+                source= {{uri: props.user.image}}
                 style = {{width:200, height:300}}
             />
-            <Text style={styles.TextMyname}>User name</Text>
+            <Text style={styles.TextMyname}>{props.user.username}</Text>
             <View style = {styles.infoProfile}>
             </View>
         </View>
-
         <View style={styles.buttonView}>
             <TouchableHighlight
             onPress={() => props.likeAlert()}
@@ -32,11 +30,6 @@ const Search_Component = props => (
                 onPress={() => props.sendEmail()}
                 >
             <Text style={styles.text}>SEND EMAIL</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-                style ={styles.notintbutton}
-                >
-            <Text style={styles.text}>NOT INTERESTED</Text>
             </TouchableHighlight>
         </View>
       </View>
