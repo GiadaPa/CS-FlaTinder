@@ -11,6 +11,7 @@ import Login_Screen from './screens/Login_Screen'
 import SignUp_Screen from './screens/SignUp_Screen'
 import Questionnaire_Screen from './screens/Questionnaire_Screen'
 import Home_Screen from './screens/Home_Screen'
+import SelectedUser_Screen from './screens/SelectedUser_Screen'
 import Personal_Profile_Screen  from './screens/Personal_Profile_Screen'
 import Settings_Screen  from './screens/Settings_Screen'
 import Search_Screen from './screens/Search_Screen'
@@ -22,7 +23,7 @@ const Welcome = createStackNavigator(
   {
     Welcome: Welcome_Screen,
     Login: Login_Screen,
-	  SignUp: SignUp_Screen,
+	SignUp: SignUp_Screen,
     Questionnaire: Questionnaire_Screen,
   },
   {
@@ -38,6 +39,7 @@ const Welcome = createStackNavigator(
 const HomeTab = createStackNavigator(
   {
     Home: Home_Screen,
+	SelectedUser: SelectedUser_Screen,
   },
   {
     defaultNavigationOptions: {
