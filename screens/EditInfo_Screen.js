@@ -21,6 +21,7 @@ const EditInfo_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							onChangeText = {(username) => container.setTempUsername(username)}
+							placeholder = {container.getUsers()[container.getLoggedInUser()].username}
 						>
 						</TextInput>
 					</View>
@@ -29,6 +30,7 @@ const EditInfo_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							onChangeText = {(password) => container.setTempPassword(password)}
+							placeholder = {container.getUsers()[container.getLoggedInUser()].password}
 						>
 						</TextInput>
 					</View>
@@ -37,6 +39,7 @@ const EditInfo_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							onChangeText = {(age) => container.setTempInfo(age, "age")}
+							placeholder = {container.getUsers()[container.getLoggedInUser()].info.age.toString()}
 							keyboardType={'numeric'}
 						>
 						</TextInput>						
@@ -46,12 +49,13 @@ const EditInfo_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							onChangeText = {(city) => container.setTempInfo(city, "city")}
+							placeholder = {container.getUsers()[container.getLoggedInUser()].info.city}
 						>
 						</TextInput>						
 					</View>
 					<View style = {styles.questionnaireView}>
-						<Text style = {styles.text}>Edit gender</Text>
-						<RadioGroup getChecked = {(value) => container.setTempInfo(value, "gender")}>
+						<Text style = {styles.text}>Insert gender</Text>
+						<RadioGroup getChecked = {(value) => container.setTempInfo(value, "gender")} RadioGroupStyle={{flexDirection: "row" }}>
 							<Radio iconName = {"lens"} label = {"Female"} value = {"female"}/>
 							<Radio iconName = {"lens"} label = {"Male"} value = {"male"}/>
 						</RadioGroup>						
@@ -61,6 +65,7 @@ const EditInfo_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							onChangeText = {(email) => container.setTempInfo(email, "email")}
+							placeholder = {container.getUsers()[container.getLoggedInUser()].info.email}
 						>
 						</TextInput>						
 					</View>
@@ -69,6 +74,7 @@ const EditInfo_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							onChangeText = {(phone) => container.setTempInfo(phone, "phone")}
+							placeholder = {container.getUsers()[container.getLoggedInUser()].info.phone}
 							keyboardType={'numeric'}
 						>
 						</TextInput>
@@ -76,7 +82,12 @@ const EditInfo_Screen = props => {
                     </ScrollView>
 					<TouchableOpacity
 						style={styles.button}
-						onPress = {() => props.navigation.navigate('PersonalProfile')}
+						onPress = {() => 
+						{
+							container.saveChanges("info")
+							props.navigation.navigate('PersonalProfile')
+						}
+						}
 					>
 						<Text style={styles.buttonText}>SAVE CHANGES</Text>
 					</TouchableOpacity>

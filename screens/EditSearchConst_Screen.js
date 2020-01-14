@@ -19,6 +19,7 @@ const EditSearchConst_Screen = props => {
 							<TextInput
 								style = {styles.textInput}
 								onChangeText = {(budget) => container.setTempConstraints(budget, "budget")}
+								placeholder = {container.getUsers()[container.getLoggedInUser()].constraints.budget}
 								keyboardType={'numeric'}
 							>
 							</TextInput>
@@ -28,6 +29,7 @@ const EditSearchConst_Screen = props => {
 							<TextInput
 								style = {styles.textInput}
 								onChangeText = {(flatmates) => container.setTempConstraints(flatmates, "flatmates")}
+								placeholder = {container.getUsers()[container.getLoggedInUser()].constraints.flatmates}
 								keyboardType={'numeric'}
 							>
 							</TextInput>
@@ -37,20 +39,21 @@ const EditSearchConst_Screen = props => {
 							<TextInput
 								style = {styles.textInput}
 								onChangeText = {(size) => container.setTempConstraints(size, "size")}
+								placeholder = {container.getUsers()[container.getLoggedInUser()].constraints.size}
 								keyboardType={'numeric'}
 							>
 							</TextInput>
 						</View>
 						<View style = {styles.questionnaireView}>
 							<Text style={styles.text}>Do you want roommates?</Text>
-							<RadioGroup row = {true} getChecked = {(value) => container.setTempConstraints(value, "roommates")}>
+							<RadioGroup getChecked = {(value) => container.setTempConstraints(value, "roommates")} RadioGroupStyle={{flexDirection: "row" }}>
 								<Radio iconName = {"lens"} label = {"Yes"} value = {"true"}/>
 								<Radio iconName = {"lens"} label = {"No"} value = {"false"}/>
 							</RadioGroup>
 						</View>
 						<View style = {styles.questionnaireView}>
 							<Text style={styles.text}>What kind of personality are you?</Text>
-							<RadioGroup getChecked = {(value) => container.setTempConstraints(value, "personality")}>
+							<RadioGroup getChecked = {(value) => container.setTempConstraints(value, "personality")} RadioGroupStyle={{flexDirection: "row" }}>
 								<Radio iconName = {"lens"} label = {"Introverted"} value = {"introvert"}/>
 								<Radio iconName = {"lens"} label = {"Ambiverted"} value = {"ambivert"}/>
 								<Radio iconName = {"lens"} label = {"Extroverted"} value = {"extrovert"}/>
@@ -58,7 +61,7 @@ const EditSearchConst_Screen = props => {
 						</View>
 						<View style = {styles.questionnaireView}>
 							<Text style={styles.text}>Are you talkative?</Text>
-							<RadioGroup getChecked = {(value) => container.setTempConstraints(value, "talkative")}>
+							<RadioGroup getChecked = {(value) => container.setTempConstraints(value, "talkative")} RadioGroupStyle={{flexDirection: "row" }}>
 								<Radio iconName = {"lens"} label = {"Shh"} value = {"little"}/>
 								<Radio iconName = {"lens"} label = {"Bla"} value = {"medium"}/>
 								<Radio iconName = {"lens"} label = {"BlaBlaBla"} value = {"high"}/>
@@ -165,10 +168,10 @@ const EditSearchConst_Screen = props => {
 					<TouchableOpacity
 						style={styles.button}
 						onPress = {() => 
-							{
-								container.register()
-								props.navigation.navigate('PersonalProfile')
-							}
+						{
+							container.saveChanges("constraints")
+							props.navigation.navigate('PersonalProfile')
+						}
 						}
 					>
 						<Text style={styles.buttonText}>SAVE CHANGES</Text>

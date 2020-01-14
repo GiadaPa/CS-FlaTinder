@@ -29,8 +29,7 @@ const Login_Screen = props => {
 						style={styles.button}
 						onPress = {() => 
 							{
-								const valid = container.login()
-								if (valid)
+								if (container.login())
 								{
 									props.navigation.navigate('MainApp')
 								}

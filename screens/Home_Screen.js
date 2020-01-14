@@ -1,14 +1,32 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View } from 'react-native';
+import {Subscribe} from 'unstated'
 
+import StateContainer from '../StateContainer'
+import Newest_Users_Component from '../UIComponents/Newest_Users_Component'
 import styles from '../style'
 
 const Home_Screen = props => {
 
-  return (
-    <View style={styles.MainContainer}>
-      <Text style={{ marginTop: 40, fontSize: 20 }}>Home Screen</Text>
-    </View>
+	return (
+	<Subscribe to = {[StateContainer]}>
+		{
+			container =>
+			(
+				<View style={styles.MainContainer}>
+					<Newest_Users_Component
+						users = {container.getUsers().slice(0, 10)}
+						selectUser = {(index) => 
+							{
+								container.setShownUserIndex(index)
+								props.navigation.navigate('SelectedUser')
+							}
+						}
+					/>
+				</View>
+			)
+		}
+	</Subscribe>
   )
 }
 

@@ -1,5 +1,6 @@
+//SelectedUser_Screen.js
 import React from 'react';
-import { View, TouchableHighlight, Text } from 'react-native';
+import { View } from 'react-native';
 import {Subscribe} from 'unstated'
 
 import StateContainer from '../StateContainer'
@@ -15,16 +16,11 @@ const Search_Screen = props => {
       container =>
       (
         <View style={styles.MainContainer}>
-          <Search_Component 
-			user = {() => container.getUsers()[1]}
-            sendEmail = {() => container.sendEmail()}
-            likeAlert = {() => container.likeAlert()}
-            />
-			<TouchableHighlight
-				style ={styles.notintbutton}
-			>
-				<Text style={styles.text}>NOT INTERESTED</Text>
-			</TouchableHighlight>
+			<Search_Component 
+				user = {container.getUsers()[container.getShownUserIndex()]}
+				sendEmail = {() => container.sendEmail()}
+				likeAlert = {() => container.likeAlert()}
+			/>
         </View>
       )
     }

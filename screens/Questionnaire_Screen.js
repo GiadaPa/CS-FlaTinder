@@ -166,8 +166,11 @@ const Questionnaire_Screen = props => {
 						style={styles.button}
 						onPress = {() => 
 							{
-								container.register()
-								props.navigation.navigate('MainApp')
+								if(container.checkConstraints())
+								{
+									container.register()
+									props.navigation.navigate('MainApp')
+								}
 							}
 						}
 					>

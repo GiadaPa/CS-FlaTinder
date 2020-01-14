@@ -16,11 +16,24 @@ const Settings_Screen = props => {
       container =>
       (
         <View style={styles.MainContainer}>
-          <Settings_Component 
-            logout = {() => container.logout()}
-            navigateOut = {() => props.navigation.navigate("Login")} 
-            navigateEditInfo = {() => props.navigation.navigate("EditInfo")}
-            navigateEditSearchConst = {() => props.navigation.navigate("EditSearchConst")}
+          <Settings_Component
+            navigateOut = {() => 
+			{
+				container.logout()
+				props.navigation.navigate("Login")}
+			}
+            navigateEditInfo = {() => 
+				{
+					container.updateTempInfo()
+					props.navigation.navigate("EditInfo")
+				}
+			}
+            navigateEditSearchConst = {() =>
+				{
+					container.updateTempConstraints()
+					props.navigation.navigate("EditSearchConst")
+				}
+			}
             />
         </View>
         )

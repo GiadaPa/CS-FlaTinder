@@ -25,13 +25,15 @@ const Personal_Profile_Screen = props => {
 }
 
 Personal_Profile_Screen.navigationOptions = ({ navigation }) => ({
-  title: "My profile",
-  headerRight: () => (
-      <Button
-          color = 'white'
-          title = "Settings"
-          onPress = {() => navigation.navigate('Settings')}
-      />
+	title: "My profile",
+	headerRight: () => (
+	<View style= {{margin: 10}}>
+		<Button
+			color = 'lightred'
+			title = "Settings"
+			onPress = {() => navigation.navigate('Settings')}
+		/>
+	</View>
   )
 })
 
