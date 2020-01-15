@@ -1,7 +1,4 @@
 //SelectedUser_Screen.js
-
-??
-
 import React from 'react';
 import { View } from 'react-native';
 import {Subscribe} from 'unstated'
@@ -11,7 +8,7 @@ import Search_Component from '../UIComponents/Search_Component'
 
 import styles from '../style'
 
-const Search_Screen = props => {
+const SelectedUser_Screen = props => {
 
   return (
     <Subscribe to = {[StateContainer]}>
@@ -35,4 +32,4 @@ Search_Screen.navigationOptions = ({navigation}) => ({
   title: "Search flatmates"
 })
 
-export default Search_Screen
+export default SelectedUser_Screen
