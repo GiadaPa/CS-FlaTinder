@@ -5,22 +5,21 @@ import styles from '../style'
 
 
 const Search_Component = props => (
-	<View style={styles.MainContainer}>
         <View style = {styles.MainContainerProfile}>
             {(props.user.image == '') ?
 				(props.user.info.gender == 'female'?
 					<Image
 						source={require('../assets/femalepic.jpg')}
-						style = {{width:200, height:300}}
+						style = {{width:350, height:300}}
 					/>:
 					<Image
 						source={require('../assets/malepic.jpg')}
-						style = {{width:200, height:300}}
+						style = {{width:350, height:300}}
 					/>
 				):
 				(<Image
 					source={{uri: props.user.image}}
-					style = {{width:200, height:300}}
+					style = {{width:350, height:300}}
 				/>)
 			}
             <Text style={styles.TextMyname}>{props.user.username}</Text>
@@ -37,32 +36,35 @@ const Search_Component = props => (
 					<Text style={styles.infoText}>{props.user.constraints.flatmates}</Text>
 					<Text style={styles.infoText}> max. mates</Text> 
 				</View>
-			</View>
-			<View style = {styles.infoProfile}>
-				<Text style={styles.infoTextTitle}>Info:</Text>
-				<Text style={styles.infoText}>    Age: {props.user.info.age}</Text>
-				<Text style={styles.infoText}>    City: {props.user.info.city}</Text>
-				<Text style={styles.infoText}>    Gender: {props.user.info.gender}</Text>
-			</View>
+            </View>
+
+            <View style={styles.wrappingView}>
+                <View style = {styles.infoProfile}>
+                    <Text style={styles.infoTextTitle}>Info:</Text>
+                    <Text style={styles.infoText}>    Age: {props.user.info.age}</Text>
+                    <Text style={styles.infoText}>    City: {props.user.info.city}</Text>
+                    <Text style={styles.infoText}>    Gender: {props.user.info.gender}</Text>
+                </View>
+            </View>
+        
+                <View style={styles.buttonView}>
+                    <TouchableHighlight
+                    onPress={() => props.likeAlert()}
+                    >
+                    <Image
+                        source={require('../assets/like.png')}
+                        style={{ width: 40, height: 40, }} 
+                        />
+                    </TouchableHighlight>
+                    
+                    <TouchableHighlight
+                        style ={styles.interestedbutton}
+                        onPress={() => props.sendEmail()}
+                        >
+                    <Text style={styles.buttonTextLike}>SEND EMAIL</Text>
+                    </TouchableHighlight>
+                </View>
         </View>
-        <View style={styles.buttonView}>
-            <TouchableHighlight
-            onPress={() => props.likeAlert()}
-            >
-            <Image
-                source={require('../assets/like.png')}
-                style={{ width: 35, height: 35, }} 
-                />
-            </TouchableHighlight>
-            
-            <TouchableHighlight
-                style ={styles.interestedbutton}
-                onPress={() => props.sendEmail()}
-                >
-            <Text style={styles.text}>SEND EMAIL</Text>
-            </TouchableHighlight>
-        </View>
-      </View>
 )
 
 export default Search_Component;
