@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import {Subscribe} from 'unstated'
+import {Subscribe, Container} from 'unstated'
 
 import StateContainer from '../StateContainer'
 import Newest_Users_Component from '../UIComponents/Newest_Users_Component'
@@ -16,6 +16,7 @@ const Home_Screen = props => {
 				<View style={styles.MainContainer}>
 					<Newest_Users_Component
 						users = {container.getUsers().slice(0, 10)}
+						userLikes = {container.getUserLikes()}
 						selectUser = {async (index) => 
 							{
 								await container.setShownUserIndex(index)
