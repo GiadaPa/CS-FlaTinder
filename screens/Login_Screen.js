@@ -16,12 +16,14 @@ const Login_Screen = props => {
 					<Text style = {styles.text}>Insert username</Text>
 					<TextInput
 						style = {styles.textInput}
+						clearButtonMode={'while-editing'}
 						onChangeText = {(username) => container.setTempUsername(username)}
 					>
 					</TextInput>
 					<Text style = {styles.text}>Insert password</Text>
 					<TextInput
 						style = {styles.textInput}
+						clearButtonMode={'while-editing'}
 						onChangeText = {(password) => container.setTempPassword(password)}
 					>
 					</TextInput>
