@@ -22,6 +22,29 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		marginTop: 10,
 	},
+	wrappingView:{
+		flexDirection:'row',
+		justifyContent: 'flex-start',
+		backgroundColor: '#f5fcff',
+	},
+	buttonView:{
+		flexDirection: 'row', 
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: '#f5fcff',
+	},
+	Scroll:{
+		justifyContent: 'center',
+		alignItems: 'flex-start',
+		backgroundColor: 'lightgrey',
+		padding: 10,
+	},
+	notintView:{
+		flexDirection: 'row', 
+		alignItems: 'flex-end',
+		justifyContent: 'flex-end',
+		backgroundColor: '#f5fcff',
+	},
 	text: {
 		fontSize: 17,
 	},
@@ -103,34 +126,46 @@ const styles = StyleSheet.create({
 	infoTextTitle:{
 		fontWeight: 'bold',
 		marginTop: 10,
-		fontSize: 20,
+		fontSize: 22,
 	},
 	infoText:{
 		fontSize: 16,
+	},
+	infoText2:{
+		fontSize: 17,
+		margin: 2,
 	},
     edittext: {
 		fontSize:20,
 		color: 'white'
 	},
-	buttonView:{
-		flexDirection: 'row', 
-		justifyContent: 'space-between',
-		alignItems: 'stretch',
+    joiningUsers: {
+		fontSize:18,
+		color: 'black',
+		backgroundColor: 'lightgrey'
+	},
+	buttonTextLike: {
+		color: 'white',
+		fontSize: 20,
+		alignSelf: 'center'
 	},
 	interestedbutton:{
 		borderRadius: 5,
-		height: 35,
-		marginLeft: 20,
-		justifyContent: 'center',
+		height: 40,
+		width: 120,
+		marginLeft: 15,
+		marginTop: 10,
+		justifyContent: 'space-evenly',
+		alignItems: 'stretch',
 		backgroundColor:'lightgreen',
 	},
 	notintbutton:{
 		borderRadius: 5,
-		height: 35,
-		marginLeft: 20,
+		height: 40,
+		width:170,
+		marginLeft: 190,
 		justifyContent: 'center',
 		backgroundColor:'#ff6666',
-
 	},
 }); 
 
