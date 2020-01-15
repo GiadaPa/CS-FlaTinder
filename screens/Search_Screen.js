@@ -19,18 +19,19 @@ const Search_Screen = props => {
 				user = {container.getBestFittingUsers()[container.getNextMate()]}
 				sendEmail = {() => container.sendEmail(container.getBestFittingUsers()[container.getNextMate()])}
 				likeAlert = {() => container.likeAlert()}
-			/>
+      />
+      <View style={styles.notintView}>
 			<TouchableHighlight
 				style ={styles.notintbutton}
 				onPress={() => 
 					{
 						container.nextMate()
-						
 					}
 				}
-			>
-				<Text style={styles.text}>NOT INTERESTED</Text>
-			</TouchableHighlight>
+			  >
+				<Text style={styles.buttonTextLike}>NOT INTERESTED</Text>
+      </TouchableHighlight>
+      </View>
         </View>
       )
     }
