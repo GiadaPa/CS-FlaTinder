@@ -16,9 +16,9 @@ const Home_Screen = props => {
 				<View style={styles.MainContainer}>
 					<Newest_Users_Component
 						users = {container.getUsers().slice(0, 10)}
-						selectUser = {(index) => 
+						selectUser = {async (index) => 
 							{
-								container.setShownUserIndex(index)
+								await container.setShownUserIndex(index)
 								props.navigation.navigate('SelectedUser')
 							}
 						}

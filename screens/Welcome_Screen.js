@@ -25,7 +25,7 @@ const Welcome_Screen = props => {
 							style={styles.button}>
 						<Text style={styles.buttonText}>LOGIN</Text>
 						</TouchableHighlight>
-								
+							
 						<TouchableHighlight
 							onPress={() => 
 								{

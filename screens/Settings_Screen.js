@@ -20,7 +20,7 @@ const Settings_Screen = props => {
             navigateOut = {() => 
 			{
 				container.logout()
-				props.navigation.navigate("Login")}
+				props.navigation.navigate("Welcome")}
 			}
             navigateEditInfo = {() => 
 				{

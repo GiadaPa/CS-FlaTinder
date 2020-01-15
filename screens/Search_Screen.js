@@ -15,13 +15,19 @@ const Search_Screen = props => {
       container =>
       (
         <View style={styles.MainContainer}>
-          <Search_Component 
-			user = {() => container.getUsers()[1]}
-            sendEmail = {() => container.sendEmail()}
-            likeAlert = {() => container.likeAlert()}
-            />
+			<Search_Component 
+				user = {container.getBestFittingUsers()[container.getNextMate()]}
+				sendEmail = {() => container.sendEmail(container.getBestFittingUsers()[container.getNextMate()])}
+				likeAlert = {() => container.likeAlert()}
+			/>
 			<TouchableHighlight
 				style ={styles.notintbutton}
+				onPress={() => 
+					{
+						container.nextMate()
+						
+					}
+				}
 			>
 				<Text style={styles.text}>NOT INTERESTED</Text>
 			</TouchableHighlight>

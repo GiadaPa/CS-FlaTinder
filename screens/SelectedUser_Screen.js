@@ -18,8 +18,8 @@ const SelectedUser_Screen = props => {
         <View style={styles.MainContainer}>
 			<Search_Component 
 				user = {container.getUsers()[container.getShownUserIndex()]}
-				sendEmail = {() => container.sendEmail()}
-				likeAlert = {() => container.likeAlert()}
+				sendEmail = {() => container.sendEmail(container.getUsers()[container.getShownUserIndex()])}
+				likeAlert = {() => container.likeAlert(container.getUsers()[container.getShownUserIndex()])}
 			/>
         </View>
       )
@@ -28,8 +28,8 @@ const SelectedUser_Screen = props => {
   )
 }
 
-Search_Screen.navigationOptions = ({navigation}) => ({
-  title: "Search flatmates"
+SelectedUser_Screen.navigationOptions = ({navigation}) => ({
+  title: "Newest Users"
 })
 
 export default SelectedUser_Screen
