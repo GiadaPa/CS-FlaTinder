@@ -27,9 +27,9 @@ const Personal_Profile_Screen = props => {
 Personal_Profile_Screen.navigationOptions = ({ navigation }) => ({
 	title: "My profile",
 	headerRight: () => (
-	<View style= {{margin: 10}}>
+	<View style= {{margin: 5}}>
 		<Button
-			color = 'lightred'
+			color = 'white'
 			title = "Settings"
 			onPress = {() => navigation.navigate('Settings')}
 		/>
