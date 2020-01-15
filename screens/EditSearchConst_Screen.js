@@ -18,6 +18,7 @@ const EditSearchConst_Screen = props => {
 							<Text style={styles.text}>Maximum budget for rent (€):</Text>
 							<TextInput
 								style = {styles.textInput}
+								clearButtonMode={'while-editing'}
 								onChangeText = {(budget) => container.setTempConstraints(budget, "budget")}
 								placeholder = {container.getUsers()[container.getLoggedInUser()].constraints.budget}
 								keyboardType={'numeric'}
@@ -28,6 +29,7 @@ const EditSearchConst_Screen = props => {
 							<Text style={styles.text}>Maximum number of flatmates:</Text>
 							<TextInput
 								style = {styles.textInput}
+								clearButtonMode={'while-editing'}
 								onChangeText = {(flatmates) => container.setTempConstraints(flatmates, "flatmates")}
 								placeholder = {container.getUsers()[container.getLoggedInUser()].constraints.flatmates}
 								keyboardType={'numeric'}
@@ -38,6 +40,7 @@ const EditSearchConst_Screen = props => {
 							<Text style={styles.text}>Minimum room size (m^2):</Text>
 							<TextInput
 								style = {styles.textInput}
+								clearButtonMode={'while-editing'}
 								onChangeText = {(size) => container.setTempConstraints(size, "size")}
 								placeholder = {container.getUsers()[container.getLoggedInUser()].constraints.size}
 								keyboardType={'numeric'}
