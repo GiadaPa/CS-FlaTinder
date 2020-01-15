@@ -18,6 +18,7 @@ const Questionnaire_Screen = props => {
 							<Text style={styles.text}>Maximum budget for rent (€):</Text>
 							<TextInput
 								style = {styles.textInput}
+								clearButtonMode={'while-editing'}
 								onChangeText = {(budget) => container.setTempConstraints(budget, "budget")}
 								keyboardType={'numeric'}
 							>
@@ -27,6 +28,7 @@ const Questionnaire_Screen = props => {
 							<Text style={styles.text}>Maximum number of flatmates:</Text>
 							<TextInput
 								style = {styles.textInput}
+								clearButtonMode={'while-editing'}
 								onChangeText = {(flatmates) => container.setTempConstraints(flatmates, "flatmates")}
 								keyboardType={'numeric'}
 							>
@@ -36,6 +38,7 @@ const Questionnaire_Screen = props => {
 							<Text style={styles.text}>Minimum room size (m^2):</Text>
 							<TextInput
 								style = {styles.textInput}
+								clearButtonMode={'while-editing'}
 								onChangeText = {(size) => container.setTempConstraints(size, "size")}
 								keyboardType={'numeric'}
 							>
