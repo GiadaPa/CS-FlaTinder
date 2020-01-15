@@ -6,6 +6,7 @@ import { Divider } from 'react-native-elements';
 import styles from '../style'
 
 
+
 const Newest_Users_Component = props => (
 	<View>
 	<View>
@@ -16,7 +17,10 @@ const Newest_Users_Component = props => (
 			contentContainerStyle={{alignItems:'flex-start'}}
 			>
 				{
-					props.users.reverse().map((user, index) => ( //invert array
+					props.users.reverse().filter((user) => {
+						console.log("aaaaaaaaaaaaaaaa", user.username, props.tempUserName)
+						return user.username !== props.tempUserName
+					}).map((user, index) => (
 						<TouchableHighlight
 							key = {user.username}
 							onPress= {() => props.selectUser(index)}
