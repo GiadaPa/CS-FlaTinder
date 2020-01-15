@@ -18,7 +18,8 @@ export default class StateContainer extends PersistContainer{
 			tempPassword: "",
 			tempInfo: {age: 0, city: "", gender: "", email: "", phone:""},
 			tempConstraints: {budget: 0, flatmates: 0, size: 0, roommates: null, personality: "", talkative: "", food:0, study:0, party:0},
-			loggedInUser: -1	//the index of the logged in user in the users array
+			loggedInUser: -1,	//the index of the logged in user in the users array
+			tempUserLikes: 0,
 		}
 	}
 	
@@ -34,6 +35,10 @@ export default class StateContainer extends PersistContainer{
 		console.log("BBBBBBBBBBBBBBBBB")
 		console.log(this.state.shownUserIndex)/////
 		return this.state.shownUserIndex
+	}
+
+	getUserLikes = () => {
+		return this.state.tempUserLikes
 	}
 	
 	setTempInfo = (value, id) => {
@@ -185,6 +190,7 @@ export default class StateContainer extends PersistContainer{
 			}
 		}
 		this.setState({users: newUsers})
+		this.setState({tempUserLikes:newLikes})
 		console.log(newUsers)
 	}
 	
