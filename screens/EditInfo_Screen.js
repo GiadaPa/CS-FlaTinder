@@ -20,6 +20,7 @@ const EditInfo_Screen = props => {
 						<Text style = {styles.text}>Edit username</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(username) => container.setTempUsername(username)}
 							placeholder = {container.getUsers()[container.getLoggedInUser()].username}
 						>
@@ -29,6 +30,7 @@ const EditInfo_Screen = props => {
 						<Text style = {styles.text}>Type a new password</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(password) => container.setTempPassword(password)}
 							placeholder = {container.getUsers()[container.getLoggedInUser()].password}
 						>
@@ -38,6 +40,7 @@ const EditInfo_Screen = props => {
 						<Text style = {styles.text}>Edit age</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(age) => container.setTempInfo(age, "age")}
 							placeholder = {container.getUsers()[container.getLoggedInUser()].info.age.toString()}
 							keyboardType={'numeric'}
@@ -48,6 +51,7 @@ const EditInfo_Screen = props => {
 						<Text style = {styles.text}>Edit city</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(city) => container.setTempInfo(city, "city")}
 							placeholder = {container.getUsers()[container.getLoggedInUser()].info.city}
 						>
@@ -64,6 +68,7 @@ const EditInfo_Screen = props => {
 						<Text style = {styles.text}>Edit email</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(email) => container.setTempInfo(email, "email")}
 							placeholder = {container.getUsers()[container.getLoggedInUser()].info.email}
 						>
@@ -73,6 +78,7 @@ const EditInfo_Screen = props => {
 						<Text style = {styles.text}>Edit phone number</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(phone) => container.setTempInfo(phone, "phone")}
 							placeholder = {container.getUsers()[container.getLoggedInUser()].info.phone}
 							keyboardType={'numeric'}
