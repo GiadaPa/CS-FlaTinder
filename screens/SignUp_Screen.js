@@ -20,6 +20,7 @@ const SignUp_Screen = props => {
 						<Text style = {styles.text}>Insert new username</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(username) => container.setTempUsername(username)}
 						>
 						</TextInput>
@@ -28,6 +29,7 @@ const SignUp_Screen = props => {
 						<Text style = {styles.text}>Insert new password</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(password) => container.setTempPassword(password)}
 						>
 						</TextInput>
@@ -36,6 +38,7 @@ const SignUp_Screen = props => {
 						<Text style = {styles.text}>Insert age</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(age) => container.setTempInfo(age, "age")}
 							keyboardType={'numeric'}
 						>
@@ -45,6 +48,7 @@ const SignUp_Screen = props => {
 						<Text style = {styles.text}>Insert city</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(city) => container.setTempInfo(city, "city")}
 						>
 						</TextInput>						
@@ -60,6 +64,7 @@ const SignUp_Screen = props => {
 						<Text style = {styles.text}>Insert email</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(email) => container.setTempInfo(email, "email")}
 						>
 						</TextInput>						
@@ -68,6 +73,7 @@ const SignUp_Screen = props => {
 						<Text style = {styles.text}>Insert phone number</Text>
 						<TextInput
 							style = {styles.textInput}
+							clearButtonMode={'while-editing'}
 							onChangeText = {(phone) => container.setTempInfo(phone, "phone")}
 							keyboardType={'numeric'}
 						>
