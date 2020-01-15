@@ -4,7 +4,7 @@ import {Container} from "unstated"
 export class PersistContainer extends Container{
 	persist = null
 	
-	constructor() {
+	constructor() { 
 		super();
 		
 		const rehydrate = async () => {

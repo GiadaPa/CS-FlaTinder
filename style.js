@@ -91,22 +91,22 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: 'lightgrey',
-		padding: 20
+		padding: 5
 	},
 	infoProfile:{
 		flex: 1,
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		backgroundColor: '#f5fcff',
-		padding: 11
+		padding: 5
 	},
 	infoTextTitle:{
 		fontWeight: 'bold',
-		marginTop: 20,
+		marginTop: 10,
 		fontSize: 20,
 	},
 	infoText:{
-		fontSize: 20,
+		fontSize: 16,
 	},
     edittext: {
 		fontSize:20,

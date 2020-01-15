@@ -13,6 +13,7 @@ export default class StateContainer extends PersistContainer{
 		this.state = {
 			users: [],
 			shownUserIndex: -1,
+			nextMate: 0,
 			tempUsername: "",
 			tempPassword: "",
 			tempInfo: {age: 0, city: "", gender: "", email: "", phone:""},
@@ -22,16 +23,16 @@ export default class StateContainer extends PersistContainer{
 	}
 	
 	getUsers = () => {
-		console.log(this.state.users)
 		return this.state.users
 	}
 	
 	getLoggedInUser = () => {
-		console.log(this.state.loggedInUser)
 		return this.state.loggedInUser
 	}
 	
 	getShownUserIndex = () => {
+		console.log("BBBBBBBBBBBBBBBBB")
+		console.log(this.state.shownUserIndex)/////
 		return this.state.shownUserIndex
 	}
 	
@@ -159,18 +160,32 @@ export default class StateContainer extends PersistContainer{
 		}
 	}
 
-	sendEmail = () => {
+	sendEmail = (user) => {
 		MailComposer.composeAsync({
-			recipients:[this.state.users[this.state.shownUserIndex].info.email],  //sono i destinatari o chi la manda?
+			recipients:[user.info.email],  //sono i destinatari o chi la manda?
 			subject:"Request for flat sharing",
 			})
-			console.log("hey")
 	}
 
-	likeAlert = () => {
-		Alert.alert(
-			'Liked profile'
-		)
+	likeAlert = (user) => {
+		alert('Liked profile')
+		var newLikes = []
+		var newUsers = []
+		for(i=0; i<this.state.users.length; i++)
+		{
+			if(user.username == this.state.users[i].username)
+			{
+				const newLike = {username: this.state.users[this.state.loggedInUser].username, date: {hours: new Date().getHours(), min: new Date().getMinutes()}}
+				newLikes = [...this.state.users[i].likes, newLike]
+				newUsers = [...newUsers, {username: user.username, password: user.password, info:  user.info, constraints: user.constraints, image: user.image, likes: newLikes, firstScore: user.firstScore, secondScore: user.secondScore}]
+			}
+			else
+			{
+				newUsers = [...newUsers, this.state.users[i]]
+			}
+		}
+		this.setState({users: newUsers})
+		console.log(newUsers)
 	}
 	
 	login = () => {
@@ -178,7 +193,7 @@ export default class StateContainer extends PersistContainer{
 		{
 			if(this.state.tempUsername == this.state.users[i].username && this.state.tempPassword == this.state.users[i].password)
 			{
-				this.setState({loggedInUser: i, tempPassword: "", tempUsername: ""})
+				this.setState({loggedInUser: i, tempPassword: "", tempUsername: "", nextMate: 0})
 				return true
 			}
 		}
@@ -232,17 +247,17 @@ export default class StateContainer extends PersistContainer{
 	}
 	
 	checkConstraints = () => {
-		if(this.state.tempConstraints.budget == 0)
+		if(this.state.tempConstraints.budget <= 0)
 		{
 			alert("invalid budget")
 			return false
 		}
-		if(this.state.tempConstraints.flatmates == 0)
+		if(this.state.tempConstraints.flatmates <= 0)
 		{
 			alert("invalid flatmates number")
 			return false
 		}
-		if(this.state.tempConstraints.size == 0)
+		if(this.state.tempConstraints.size <= 0)
 		{
 			alert("invalid size")
 			return false
@@ -266,8 +281,104 @@ export default class StateContainer extends PersistContainer{
 	}
 	
 	register = () => { //save username, password and constraints
-		const updatedUsers = [...this.state.users, {username: this.state.tempUsername, password: this.state.tempPassword,info: this.state.tempInfo, constraints: this.state.tempConstraints, image: ''}]
-		this.setState({users: updatedUsers, loggedInUser: (updatedUsers.length-1), tempPassword: "", tempUsername: ""})
+		var firstscore = 0
+		var secondscore = 0
+		const constraints = this.state.tempConstraints
+		var budget  = Math.floor(constraints.budget / 100) *3
+		if(budget > 9)
+		{
+			budget = 9
+		}
+		console.log("BUDGET")
+		console.log(budget)
+		var flatmates = (4-constraints.flatmates) * 3
+		if(flatmates < 0)
+		{
+			flatmates = 0
+		}
+		console.log("FLATMATES")
+		console.log(flatmates)
+		var size = 0
+		console.log(constraints.size)
+		if(constraints.size > 0 && constraints.size <10)
+		{
+			size = 0
+		}
+		else
+		{
+			if(constraints.size >= 10 && constraints.size < 12)
+			{
+				size = 3
+			}
+			else
+			{
+				if(constraints.size >= 12 && constraints.size < 15)
+				{
+					size = 6
+				}
+				else
+				{
+					size = 9
+				}
+			}
+		}
+		console.log("SIZE")
+		console.log(size)
+		var roommates = 0
+		if(constraints.roommates == true)
+		{
+			roommates = 0
+		}
+		else
+		{
+			roommates = 9
+		}
+		
+		console.log("ROOMMATES")
+		console.log(roommates)
+		firstscore = (budget + flatmates + size + roommates) / 4
+		
+		var personality = 0
+		if(constraints.personality == "introvert")
+		{
+			personality = 3
+		}
+		else
+		{
+			if(constraints.personality == "ambivert")
+			{
+				personality = 6
+			}
+			else
+			{
+				personality = 9
+			}
+		}		
+		var talkative = 0
+		if(constraints.talkative == "little")
+		{
+			talkative = 3
+		}
+		else
+		{
+			if(constraints.talkative == "medium")
+			{
+				talkative = 6
+			}
+			else
+			{
+				talkative = 9
+			}
+		}
+		var clean = constraints.clean
+		var food = constraints.food
+		var study = constraints.study
+		var party = 9 - constraints.party
+		
+		secondscore = (personality + talkative + clean + food + study + party)/6
+		
+		const updatedUsers = [...this.state.users, {username: this.state.tempUsername, password: this.state.tempPassword,info: this.state.tempInfo, constraints: this.state.tempConstraints, image: '', likes: [],  firstScore: firstscore, secondScore: secondscore}]
+		this.setState({users: updatedUsers, loggedInUser: (updatedUsers.length-1), tempPassword: "", tempUsername: "", nextMate: 0})
 	}
 	
 	resetTemps = () => {
@@ -279,10 +390,10 @@ export default class StateContainer extends PersistContainer{
 	saveChanges = (id) => {
 		switch(id) {
 			case "info":
-				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.tempInfo, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image}
+				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.tempInfo, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser]}
 				break;
 			case "constraints":
-				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info:  this.state.users[this.state.loggedInUser].info, constraints: this.state.tempConstraints, image: this.state.users[this.state.loggedInUser].image}
+				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info:  this.state.users[this.state.loggedInUser].info, constraints: this.state.tempConstraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser]}
 				break;
 		}
 		var newUsers = []
@@ -300,7 +411,49 @@ export default class StateContainer extends PersistContainer{
 		this.setState({users: newUsers})
 	}
 	
+	
+	getBestFittingUsers = () => {
+		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+		var orderedUsers = []
+		for(var i=0; i<this.state.users.length; i++)
+		{
+			console.log(this.state.users[this.state.loggedInUser].username)
+			console.log(this.state.users[i].username)
+			if(this.state.users[this.state.loggedInUser].username != this.state.users[i].username)
+			{
+				console.log("if")
+				orderedUsers = [...orderedUsers, this.state.users[i]]
+			}
+		}
+		const loggedInFirstScore = this.state.users[this.state.loggedInUser].firstScore
+		const loggedInSecondScore = this.state.users[this.state.loggedInUser].secondScore
+		
+		orderedUsers.sort(function (a, b) { //se è meno li lascia così se è piu li gira
+			const differenceA = (Math.abs(a.firstScore-loggedInFirstScore) + Math.abs(a.secondScore-loggedInSecondScore))/2
+			const differenceB = (Math.abs(b.firstScore-loggedInFirstScore) + Math.abs(b.secondScore-loggedInSecondScore))/2
+			return differenceA - differenceB;
+		});
+		
+		console.log(orderedUsers)
+		return(orderedUsers)
+	}
+	
+	getNextMate = () => {
+		return this.state.nextMate
+	}
+	
+	nextMate = () => {
+		newMate = this.state.nextMate + 1
+		if(newMate == this.state.users.length -1)
+		{
+			newMate = 0
+		}
+		this.setState({nextMate: newMate})
+	}
+	
 	setShownUserIndex = (index) => {
+		console.log("SETSHOWNUSERINDEX")
+		console.log(index)
 		this.setState({shownUserIndex: index})
 	}
 	
