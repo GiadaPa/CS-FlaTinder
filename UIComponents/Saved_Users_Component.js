@@ -27,19 +27,19 @@ const Saved_Users_Component = props => (
 								(user.info.gender == 'female'?
 									<Image
 										source={require('../assets/femalepic.jpg')}
-										style = {{width:100, height:100}}
+										style = {{width:200, height:200}}
 									/>:
 									<Image
 										source={require('../assets/malepic.jpg')}
-										style = {{width:100, height:100}}
+										style = {{width:200, height:200}}
 									/>
 								):
 								(<Image
 									source={{uri: user.image}}
-									style = {{width:100, height:100}}
+									style = {{width:200, height:200}}
 								/>)
 							}
-							<Text style={styles.infoText}>{user.username}</Text>
+							<Text style={styles.joiningUsers}>{user.username}</Text>
 						</View>
 					</TouchableHighlight>
 				))
