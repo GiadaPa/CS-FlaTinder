@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import {Subscribe, Container} from 'unstated'
+import {Subscribe} from 'unstated'
 
 import StateContainer from '../StateContainer'
 import Newest_Users_Component from '../UIComponents/Newest_Users_Component'
+import Saved_Users_Component from '../UIComponents/Saved_Users_Component'
 import styles from '../style'
 
 const Home_Screen = props => {
@@ -15,11 +16,19 @@ const Home_Screen = props => {
 			(
 				<View style={styles.MainContainer}>
 					<Newest_Users_Component
-						users = {container.getUsers().slice(0, 10)}
-						userLikes = {container.getUserLikes()}
-						selectUser = {async (index) => 
+						users = {container.getNewestUsers()}
+						selectUser = {async (username) => 
 							{
-								await container.setShownUserIndex(index)
+								await container.setShownUserIndex(username)
+								props.navigation.navigate('SelectedUser')
+							}
+						}
+					/>
+					<Saved_Users_Component
+						users = {container.getSavedUsers()}
+						selectUser = {async (username) => 
+							{
+								await container.setShownUserIndex(username)
 								props.navigation.navigate('SelectedUser')
 							}
 						}

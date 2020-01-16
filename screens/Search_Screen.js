@@ -15,23 +15,28 @@ const Search_Screen = props => {
       container =>
       (
         <View style={styles.MainContainer}>
-			<Search_Component 
-				user = {container.getBestFittingUsers()[container.getNextMate()]}
-				sendEmail = {() => container.sendEmail(container.getBestFittingUsers()[container.getNextMate()])}
-				likeAlert = {() => container.likeAlert()}
-      />
-      <View style={styles.notintView}>
-			<TouchableHighlight
-				style ={styles.notintbutton}
-				onPress={() => 
-					{
-						container.nextMate()
-					}
-				}
-			  >
-				<Text style={styles.buttonTextLike}>NOT INTERESTED</Text>
-      </TouchableHighlight>
-      </View>
+			{container.getBestFittingUsers().length == 0?
+			<Text>You are the only user :( invite your friends!</Text>:
+			<View>
+				<Search_Component 
+					user = {container.getBestFittingUsers()[container.getNextMate()]}
+					sendEmail = {() => container.sendEmail(container.getBestFittingUsers()[container.getNextMate()])}
+					likeAlert = {() => container.likeAlert(container.getBestFittingUsers()[container.getNextMate()])}
+					saveUser = {() => container.saveUser(container.getBestFittingUsers()[container.getNextMate()])}
+				/>
+				<View style={styles.notintView}>
+					<TouchableHighlight
+						style ={styles.notintbutton}
+						onPress={() => 
+						{
+							container.nextMate()
+						}
+						}
+					>
+						<Text style={styles.buttonTextLike}>NOT INTERESTED</Text>
+					</TouchableHighlight>
+				</View>
+			</View>}
         </View>
       )
     }

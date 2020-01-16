@@ -68,6 +68,15 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		backgroundColor:'#ff4d4d',
 	},
+	whitebutton: {
+		alignSelf: 'stretch',
+		margin: 5,
+		padding: 5,
+		borderRadius: 10,
+		height: 35,
+		justifyContent: 'center',
+		backgroundColor: 'white',
+	},
     buttonText: {
 		color: 'white',
 		fontSize: 20,

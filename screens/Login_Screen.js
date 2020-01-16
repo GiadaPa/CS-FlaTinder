@@ -29,9 +29,9 @@ const Login_Screen = props => {
 					</TextInput>
 					<TouchableOpacity
 						style={styles.button}
-						onPress = {() => 
+						onPress = {async() => 
 							{
-								if (container.login())
+								if (await container.login())
 								{
 									props.navigation.navigate('MainApp')
 								}

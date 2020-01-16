@@ -1,4 +1,4 @@
-//Newest_Users_Component.js
+//Saved_Users_Component.js
 import React from 'react';
 import { TouchableHighlight,ScrollView, View, Text, Image, Button } from 'react-native';
 
@@ -7,14 +7,12 @@ import styles from '../style'
 
 
 
-const Newest_Users_Component = props => (
-	<View>
-	<View style = {{height: 200}}>
-		<Text style={styles.joiningUsers}>Users that joined FlaTinder recently</Text>
+const Saved_Users_Component = props => (
+	<View style = {{flex:1, margin: 5}}>
+		<Text style={styles.joiningUsers}>Saved Users</Text>
 		{props.users.length == 0?
-			<Text>You are the only user :( invite your friends!</Text>:
+			<Text>No user saved</Text>:
 			<ScrollView
-				horizontal={true}
 				bounces={false}
 				contentContainerStyle={{alignItems:'flex-start'}}
 			>
@@ -42,17 +40,13 @@ const Newest_Users_Component = props => (
 								/>)
 							}
 							<Text style={styles.infoText}>{user.username}</Text>
-							<Text style={styles.infoText}>Likes: {user.likes.length}</Text>
-							</View>
-						</TouchableHighlight>
+						</View>
+					</TouchableHighlight>
 				))
 			}
 			</ScrollView>
 		}
-		</View>
-		<Divider style={{ height: 2, backgroundColor: 'black'}} />
 	</View>
-	
 )
 
-export default Newest_Users_Component;
+export default Saved_Users_Component;

@@ -11,15 +11,14 @@ export default class StateContainer extends PersistContainer{
 	constructor(props){
 		super(props)
 		this.state = {
-			users: [],
+			users: [], //username, password, info, constraints, image, likes, firstScore, secondScore, savedUsers
 			shownUserIndex: -1,
 			nextMate: 0,
 			tempUsername: "",
 			tempPassword: "",
 			tempInfo: {age: 0, city: "", gender: "", email: "", phone:""},
 			tempConstraints: {budget: 0, flatmates: 0, size: 0, roommates: null, personality: "", talkative: "", food:0, study:0, party:0},
-			loggedInUser: -1,	//the index of the logged in user in the users array
-			tempUserLikes: 0,
+			loggedInUser: -1	//the index of the logged in user in the users array
 		}
 	}
 	
@@ -35,10 +34,6 @@ export default class StateContainer extends PersistContainer{
 		console.log("BBBBBBBBBBBBBBBBB")
 		console.log(this.state.shownUserIndex)/////
 		return this.state.shownUserIndex
-	}
-
-	getUserLikes = () => {
-		return this.state.tempUserLikes
 	}
 	
 	setTempInfo = (value, id) => {
@@ -154,7 +149,7 @@ export default class StateContainer extends PersistContainer{
 			{
 				if(i==this.state.loggedInUser)
 				{
-					updatedUsers = [...updatedUsers, {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.users[this.state.loggedInUser].info, constraints: this.state.users[this.state.loggedInUser].constraints, image: result.uri}]
+					updatedUsers = [...updatedUsers, {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.users[this.state.loggedInUser].info, constraints: this.state.users[this.state.loggedInUser].constraints, image: result.uri, likes: this.state.users[this.state.loggedInUser].likes, firstScore: this.state.users[this.state.loggedInUser].firstScore, secondScore: this.state.users[this.state.loggedInUser].secondScore, savedUsers: this.state.users[this.state.loggedInUser].savedUsers}]
 				}
 				else
 				{
@@ -172,17 +167,51 @@ export default class StateContainer extends PersistContainer{
 			})
 	}
 
+	saveUser = (user) => {
+		var newSavedUsers = []
+		var newUsers = []
+		var different = true
+		for(var i=0; i<this.state.users[this.state.loggedInUser].savedUsers.length; i++)
+		{
+			if(this.state.users[this.state.loggedInUser].savedUsers[i].username == user.username)
+			{
+				different = false
+			}
+		}
+		if(different)
+		{
+			newSavedUsers = [...this.state.users[this.state.loggedInUser].savedUsers, user]
+			for(var i=0; i<this.state.users.length; i++)
+			{
+				if(this.state.users[this.state.loggedInUser].username == this.state.users[i].username)
+				{
+					newUsers = [...newUsers, {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.users[this.state.loggedInUser].info, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser].likes, firstScore: this.state.users[this.state.loggedInUser].firstScore, secondScore: this.state.users[this.state.loggedInUser].secondScore, savedUsers: newSavedUsers}]
+				}
+				else
+				{
+					newUsers = [...newUsers, this.state.users[i]]
+				}
+			}
+			this.setState({users: newUsers})
+			alert('Saved')
+		}
+		else
+		{
+			alert('Already saved')
+		}
+	}
+
 	likeAlert = (user) => {
 		alert('Liked profile')
 		var newLikes = []
 		var newUsers = []
-		for(i=0; i<this.state.users.length; i++)
+		for(var i=0; i<this.state.users.length; i++)
 		{
 			if(user.username == this.state.users[i].username)
 			{
-				const newLike = {username: this.state.users[this.state.loggedInUser].username, date: {hours: new Date().getHours(), min: new Date().getMinutes()}}
+				const newLike = {username: this.state.users[this.state.loggedInUser].username}
 				newLikes = [...this.state.users[i].likes, newLike]
-				newUsers = [...newUsers, {username: user.username, password: user.password, info:  user.info, constraints: user.constraints, image: user.image, likes: newLikes, firstScore: user.firstScore, secondScore: user.secondScore}]
+				newUsers = [...newUsers, {username: user.username, password: user.password, info:  user.info, constraints: user.constraints, image: user.image, likes: newLikes, firstScore: user.firstScore, secondScore: user.secondScore, savedUsers: user.savedUsers}]
 			}
 			else
 			{
@@ -190,7 +219,6 @@ export default class StateContainer extends PersistContainer{
 			}
 		}
 		this.setState({users: newUsers})
-		this.setState({tempUserLikes:newLikes})
 		console.log(newUsers)
 	}
 	
@@ -383,7 +411,7 @@ export default class StateContainer extends PersistContainer{
 		
 		secondscore = (personality + talkative + clean + food + study + party)/6
 		
-		const updatedUsers = [...this.state.users, {username: this.state.tempUsername, password: this.state.tempPassword,info: this.state.tempInfo, constraints: this.state.tempConstraints, image: '', likes: [],  firstScore: firstscore, secondScore: secondscore}]
+		const updatedUsers = [...this.state.users, {username: this.state.tempUsername, password: this.state.tempPassword,info: this.state.tempInfo, constraints: this.state.tempConstraints, image: '', likes: [],  firstScore: firstscore, secondScore: secondscore, savedUsers:[]}]
 		this.setState({users: updatedUsers, loggedInUser: (updatedUsers.length-1), tempPassword: "", tempUsername: "", nextMate: 0})
 	}
 	
@@ -396,10 +424,10 @@ export default class StateContainer extends PersistContainer{
 	saveChanges = (id) => {
 		switch(id) {
 			case "info":
-				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.tempInfo, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser]}
+				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.tempInfo, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser].likes, savedUsers: this.state.users[this.state.loggedInUser].savedUsers}
 				break;
 			case "constraints":
-				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info:  this.state.users[this.state.loggedInUser].info, constraints: this.state.tempConstraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser]}
+				updatedUser = {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info:  this.state.users[this.state.loggedInUser].info, constraints: this.state.tempConstraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser].likes, savedUsers: this.state.users[this.state.loggedInUser].savedUsers}
 				break;
 		}
 		var newUsers = []
@@ -457,9 +485,44 @@ export default class StateContainer extends PersistContainer{
 		this.setState({nextMate: newMate})
 	}
 	
-	setShownUserIndex = (index) => {
+	getNewestUsers = () => {
+		console.log("getnewusers")
+		var newest = []
+		console.log(this.state.users.length)
+		for(var i=this.state.users.length-1; i>this.state.users.length-11 && i>=0; i--)
+		{
+			console.log("for")
+			console.log(this.state.users[i].username)
+			if(this.state.users[this.state.loggedInUser].username != this.state.users[i].username)
+			{
+				console.log("if")
+				newest = [...newest, this.state.users[i]]
+				console.log(newest)
+			}
+		}
+		console.log(newest)
+		return newest
+	}
+	
+	getSavedUsers = () => {
+		console.log("getsavedusers")
+		console.log(this.state.users[this.state.loggedInUser].savedUsers)
+		console.log(this.state.users[this.state.loggedInUser].savedUsers.length)	
+		return this.state.users[this.state.loggedInUser].savedUsers
+	}
+	
+	setShownUserIndex = (username) => {
 		console.log("SETSHOWNUSERINDEX")
-		console.log(index)
+		console.log(username)
+		console.log(this.state.users)
+		var index = 0
+		for(var i=0; i<this.state.users.length; i++)
+		{
+			if(username == this.state.users[i].username)
+			{
+				index = i
+			}
+		}
 		this.setState({shownUserIndex: index})
 	}
 	

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, TouchableHighlight, Text } from 'react-native';
 import {Subscribe} from 'unstated'
 
 import StateContainer from '../StateContainer'
@@ -27,13 +27,12 @@ const Personal_Profile_Screen = props => {
 Personal_Profile_Screen.navigationOptions = ({ navigation }) => ({
 	title: "My profile",
 	headerRight: () => (
-	<View style= {{margin: 5}}>
-		<Button
-			color = 'white'
-			title = "Settings"
+		<TouchableHighlight
+			style={styles.whitebutton}
 			onPress = {() => navigation.navigate('Settings')}
-		/>
-	</View>
+		>
+		<Text>Settings</Text>
+		</TouchableHighlight>
   )
 })
 

@@ -167,11 +167,11 @@ const Questionnaire_Screen = props => {
 					</ScrollView>
 					<TouchableOpacity
 						style={styles.button}
-						onPress = {() => 
+						onPress = {async () => 
 							{
 								if(container.checkConstraints())
 								{
-									container.register()
+									await container.register()
 									props.navigation.navigate('MainApp')
 								}
 							}

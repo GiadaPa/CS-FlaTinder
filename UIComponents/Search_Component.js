@@ -53,7 +53,16 @@ const Search_Component = props => (
                     >
                     <Image
                         source={require('../assets/like.png')}
-                        style={{ width: 40, height: 40, }} 
+                        style={{ width: 40, height: 40}} 
+                        />
+                    </TouchableHighlight>
+					
+					<TouchableHighlight
+                    onPress={() => props.saveUser()}
+                    >
+                    <Image
+                        source={require('../assets/save.png')}
+                        style={{ width: 40, height: 40}} 
                         />
                     </TouchableHighlight>
                     
