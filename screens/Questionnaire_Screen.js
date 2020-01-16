@@ -67,8 +67,8 @@ const Questionnaire_Screen = props => {
 								<Radio iconName = {"lens"} label = {"BlaBlaBla"} value = {"high"}/>
 							</RadioGroup>
 						</View>
-							<Text style={styles.text}>How much are these things important to you?</Text>
-						<View style = {styles.questionnaireView}>
+							<Text style={styles.textQuest}>How much do you care about these things?</Text>
+						<View style = {styles.sliderView}>
 							<Text style={styles.text}>Cleaness</Text>
 							<Slider
 								step = {1}
@@ -92,7 +92,7 @@ const Questionnaire_Screen = props => {
 								<Text>a lot</Text>
 							</View>
 						</View>
-						<View style = {styles.questionnaireView}>
+						<View style = {styles.sliderView}>
 							<Text style={styles.text}>Healthy food</Text>
 							<Slider
 								step = {1}
@@ -116,7 +116,7 @@ const Questionnaire_Screen = props => {
 								<Text>a lot</Text>
 							</View>
 						</View>
-						<View style = {styles.questionnaireView}>
+						<View style = {styles.sliderView}>
 							<Text style={styles.text}>Studying or Working</Text>
 							<Slider
 								step = {1}
@@ -140,7 +140,7 @@ const Questionnaire_Screen = props => {
 								<Text>a lot</Text>
 							</View>
 						</View>
-						<View style = {styles.questionnaireView}>
+						<View style = {styles.sliderView}>
 							<Text style={styles.text}>Partying and going out</Text>
 							<Slider
 								step = {1}
