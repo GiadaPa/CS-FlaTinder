@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f5fcff',
 		padding: 11
 	},
+	AvoidingView:{
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#f5fcff',
+		padding: 11
+	},
 	MainContainerProfile: {
 		flex: 1,
 		justifyContent: 'flex-start',
@@ -21,6 +28,14 @@ const styles = StyleSheet.create({
 		alignItems: 'stretch',
 		marginBottom: 10,
 		marginTop: 10,
+		marginLeft:5,
+	},
+	sliderView:{
+		alignItems: 'stretch',
+		marginBottom: 10,
+		marginTop: 10,
+		marginLeft:20,
+		marginRight:20
 	},
 	wrappingView:{
 		flexDirection:'row',
@@ -39,6 +54,13 @@ const styles = StyleSheet.create({
 		backgroundColor: 'lightgrey',
 		padding: 10,
 	},
+	Scroll2:{
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'flex-start',
+		backgroundColor: 'lightgrey',
+		padding: 10,
+	},
 	notintView:{
 		flexDirection: 'row', 
 		alignItems: 'flex-end',
@@ -48,12 +70,22 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 17,
 	},
+	textQuest: {
+		fontSize: 17,
+		marginLeft:5,
+	},
 	row: {
 		marginLeft: 10,
 		marginRight: 10,
 		flexDirection: 'row', 
 		justifyContent: 'space-between',
 		alignItems: 'center',
+	},
+	row2: {
+		marginLeft: 10,
+		flexDirection: 'row', 
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
 	},
 	titleText: {
 		fontWeight: 'bold',
@@ -138,14 +170,14 @@ const styles = StyleSheet.create({
 		fontSize: 22,
 	},
 	infoText:{
-		fontSize: 16,
+		fontSize: 17,
 	},
 	infoText2:{
 		fontSize: 17,
 		margin: 2,
 	},
     edittext: {
-		fontSize:20,
+		fontSize:25,
 		color: 'white'
 	},
     joiningUsers: {
