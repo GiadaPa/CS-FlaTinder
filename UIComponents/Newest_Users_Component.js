@@ -1,6 +1,6 @@
 //Newest_Users_Component.js
 import React from 'react';
-import { TouchableHighlight,ScrollView, View, Text, Image, Button } from 'react-native';
+import { TouchableHighlight,ScrollView, View, Text, Image } from 'react-native';
 
 import { Divider } from 'react-native-elements';
 import styles from '../style'
@@ -12,7 +12,7 @@ const Newest_Users_Component = props => (
 		<View style = {styles.newestUsersComponent}>
 			<Text style={styles.joiningUsers}>Users that joined FlaTinder recently</Text>
 			{props.users.length == 0?
-				<Text>You are the only user :( invite your friends!</Text>:
+				<Text style={styles.noUserText}>You are the only user :( invite your friends!</Text>:
 				<ScrollView
 					horizontal={true}
 					bounces={false}

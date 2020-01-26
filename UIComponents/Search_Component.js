@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight, View, Text, Button, Image } from 'react-native';
+import { TouchableHighlight, View, Text, Image } from 'react-native';
 import {Avatar} from 'react-native-elements';
 
 import styles from '../style'
@@ -81,7 +81,7 @@ const Search_Component = props => (
 					onPress={() => props.sendEmail()}
 				>
 					<Text style={styles.buttonText}>SEND EMAIL</Text>
-				</TouchableHighlight>
+                </TouchableHighlight>
 			</View>
         </View>
 )
