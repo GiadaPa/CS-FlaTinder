@@ -4,7 +4,6 @@ import {Avatar} from 'react-native-elements';
 
 import styles from '../style'
 
-
 const Search_Component = props => (
         <View style = {styles.MainContainerProfile}>
             {(props.user.image == '') ?
@@ -82,6 +81,12 @@ const Search_Component = props => (
 				>
 					<Text style={styles.buttonText}>SEND EMAIL</Text>
                 </TouchableHighlight>
+				<TouchableHighlight
+					style ={styles.viewOnMap}
+					onPress={() => props.viewOnMap()}
+				>
+					<Text style={styles.buttonText}>VIEW ON MAP</Text>
+				</TouchableHighlight>
 			</View>
         </View>
 )

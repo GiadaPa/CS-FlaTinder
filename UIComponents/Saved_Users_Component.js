@@ -4,8 +4,6 @@ import { TouchableHighlight,ScrollView, View, Text, Image } from 'react-native';
 
 import styles from '../style'
 
-
-
 const Saved_Users_Component = props => (
 	<View style = {{flex:1, margin: 5}}>
 		<Text style={styles.joiningUsers}>Saved Users</Text>
