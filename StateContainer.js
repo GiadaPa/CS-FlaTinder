@@ -15,6 +15,8 @@ export default class StateContainer extends PersistContainer{
 			users: [], //username, password, info, constraints, image, likes, firstScore, secondScore, savedUsers
 			shownUserIndex: -1,
 			nextMate: 0,
+			tempMapCoord: {latitude: 0, longitude: 0},
+			tempMapMyCoord: {latitude: 0, longitude: 0},
 			tempUsername: "",
 			tempPassword: "",
 			tempInfo: {age: 0, city: "", gender: "", email: "", phone:""},
@@ -32,8 +34,6 @@ export default class StateContainer extends PersistContainer{
 	}
 	
 	getShownUserIndex = () => {
-		console.log("BBBBBBBBBBBBBBBBB")
-		console.log(this.state.shownUserIndex)/////
 		return this.state.shownUserIndex
 	}
 	
@@ -176,13 +176,25 @@ export default class StateContainer extends PersistContainer{
 			errorMessage: 'Permission to access location was denied',
 		  });
 		}
-	
-		//invece che Bolzano c'è da chiamare user.info.city
-		let location = (await Location.geocodeAsync("Bolzano"))[0];
-		console.log("---------------------location is", location)
-		return location
+		let location = (await Location.geocodeAsync(user.info.city))[0];
+		return {latitude: location.latitude, longitude: location.longitude}
 	}
-
+	
+	setTempMapMyCoord = (coord) => {
+		this.setState({tempMapMyCoord: coord})
+	}
+	
+	getTempMapMyCoord = () => {
+		return this.state.tempMapMyCoord
+	}
+	
+	setTempMapCoord = (coord) => {
+		this.setState({tempMapCoord: coord})
+	}
+	
+	getTempMapCoord = () => {
+		return this.state.tempMapCoord
+	}
 
 	saveUser = (user) => {
 		var newSavedUsers = []
@@ -256,7 +268,6 @@ export default class StateContainer extends PersistContainer{
 			}
 		}
 		this.setState({users: newUsers})
-		console.log(newUsers)
 	}
 	
 	login = () => {
@@ -269,10 +280,6 @@ export default class StateContainer extends PersistContainer{
 			}
 		}
 		return false
-	}
-
-	logout = () => {
-		console.log(this.state)
 	}
 
 	signup = () => {
@@ -360,17 +367,12 @@ export default class StateContainer extends PersistContainer{
 		{
 			budget = 9
 		}
-		console.log("BUDGET")
-		console.log(budget)
 		var flatmates = (4-constraints.flatmates) * 3
 		if(flatmates < 0)
 		{
 			flatmates = 0
 		}
-		console.log("FLATMATES")
-		console.log(flatmates)
 		var size = 0
-		console.log(constraints.size)
 		if(constraints.size > 0 && constraints.size <10)
 		{
 			size = 0
@@ -393,8 +395,6 @@ export default class StateContainer extends PersistContainer{
 				}
 			}
 		}
-		console.log("SIZE")
-		console.log(size)
 		var roommates = 0
 		if(constraints.roommates == true)
 		{
@@ -405,8 +405,6 @@ export default class StateContainer extends PersistContainer{
 			roommates = 9
 		}
 		
-		console.log("ROOMMATES")
-		console.log(roommates)
 		firstscore = (budget + flatmates + size + roommates) / 4
 		
 		var personality = 0
@@ -484,15 +482,11 @@ export default class StateContainer extends PersistContainer{
 	
 	
 	getBestFittingUsers = () => {
-		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 		var orderedUsers = []
 		for(var i=0; i<this.state.users.length; i++)
 		{
-			console.log(this.state.users[this.state.loggedInUser].username)
-			console.log(this.state.users[i].username)
 			if(this.state.users[this.state.loggedInUser].username.toUpperCase() != this.state.users[i].username.toUpperCase())
 			{
-				console.log("if")
 				orderedUsers = [...orderedUsers, this.state.users[i]]
 			}
 		}
@@ -504,8 +498,6 @@ export default class StateContainer extends PersistContainer{
 			const differenceB = (Math.abs(b.firstScore-loggedInFirstScore) + Math.abs(b.secondScore-loggedInSecondScore))/2
 			return differenceA - differenceB;
 		});
-		
-		console.log(orderedUsers)
 		return(orderedUsers)
 	}
 	
@@ -524,7 +516,6 @@ export default class StateContainer extends PersistContainer{
 	}
 	
 	getNewestUsers = () => {
-		console.log("getnewusers")
 		var newest = []
 		for(var i=this.state.users.length-1; i>this.state.users.length-11 && i>=0; i--)
 		{
@@ -538,21 +529,17 @@ export default class StateContainer extends PersistContainer{
 	
 	checkIfSaved(user)
 	{
-		console.log("checkIfSaved")
 		for(i=0; i<this.state.users[this.state.loggedInUser].savedUsers.length; i++)
 		{
 			if(user.username.toUpperCase() == this.state.users[this.state.loggedInUser].savedUsers[i].username.toUpperCase())
 			{
-				console.log("true")
 				return true
 			}
 		}
-		console.log("false")
 		return false
 	}
 	
 	getSavedUsers = () => {
-		console.log("getsavedusers")
 		return this.state.users[this.state.loggedInUser].savedUsers
 	}
 	

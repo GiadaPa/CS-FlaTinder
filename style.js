@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
 	noUserText:{
 		fontWeight: 'bold',
 		marginTop: 40,
-		fontSize: 22,
+		fontSize: 18,
 		color: 'red',
 	},
 	infoTextTitle:{ //si

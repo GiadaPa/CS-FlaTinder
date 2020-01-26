@@ -13,7 +13,6 @@ export class PersistContainer extends Container{
 			
 			try{
 				const serialState = await storage.getItem(key);
-				//const serialState = await storage.clear();
 				
 				if(serialState !== null){
 					const incomingState = JSON.parse(serialState)

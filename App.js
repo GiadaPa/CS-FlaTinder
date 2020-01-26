@@ -42,6 +42,7 @@ const HomeTab = createStackNavigator(
   {
     Home: Home_Screen,
 	SelectedUser: SelectedUser_Screen,
+    Map: Map_Screen,
   },
   {
     defaultNavigationOptions: {
