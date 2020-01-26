@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView, Text, TextInput, TouchableOpacity, Slider, KeyboardAvoidingView} from 'react-native';
+import {View, ScrollView, Text, TextInput, TouchableOpacity, Slider} from 'react-native';
 import RadioGroup, {Radio} from "react-native-radio-input";
 import {Subscribe} from 'unstated'
 
@@ -12,7 +12,7 @@ const EditSearchConst_Screen = props => {
 		{
 			container =>
 			(
-				<KeyboardAvoidingView style={styles.MainContainer}>
+				<View style={styles.MainContainer}>
 					<ScrollView>
 						<View style = {styles.questionnaireView}>
 							<Text style={styles.text}>Maximum budget for rent (€):</Text>
@@ -180,7 +180,7 @@ const EditSearchConst_Screen = props => {
 						<Text style={styles.buttonText}>SAVE CHANGES</Text>
 					</TouchableOpacity>
 					
-				</KeyboardAvoidingView>
+				</View>
 			)
 		}
 	</Subscribe>

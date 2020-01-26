@@ -19,7 +19,6 @@ const Settings_Screen = props => {
           <Settings_Component
             navigateOut = {() => 
 			{
-				container.logout()
 				props.navigation.navigate("Welcome")}
 			}
             navigateEditInfo = {() => 

@@ -22,6 +22,13 @@ const SelectedUser_Screen = props => {
 				sendEmail = {() => container.sendEmail(container.getUsers()[container.getShownUserIndex()])}
 				likeAlert = {() => container.likeAlert(container.getUsers()[container.getShownUserIndex()])}
 				saveUser = {() => container.saveUser(container.getUsers()[container.getShownUserIndex()])}
+				viewOnMap = {async() => 
+						{
+							container.setTempMapMyCoord(await container.getLocation(container.getUsers()[container.getLoggedInUser()]))
+							container.setTempMapCoord(await container.getLocation(container.getUsers()[container.getShownUserIndex()]))
+							props.navigation.navigate('Map')
+						}
+					}
 			/>
         </View>
       )
