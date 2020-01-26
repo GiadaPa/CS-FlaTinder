@@ -3,39 +3,25 @@ import {StyleSheet} from 'react-native'
 
 
 const styles = StyleSheet.create({
-	MainContainer: {
+	MainContainer: { //si
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f5fcff',
 		padding: 11
 	},
-	AvoidingView:{
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#f5fcff',
-		padding: 11
-	},
-	MainContainerProfile: {
+	MainContainerProfile: {// si
 		flex: 1,
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 		backgroundColor: '#f5fcff',
 		padding: 11
 	},
-	questionnaireView: {
+	questionnaireView: { //si
 		alignItems: 'stretch',
 		marginBottom: 10,
 		marginTop: 10,
 		marginLeft:5,
-	},
-	sliderView:{
-		alignItems: 'stretch',
-		marginBottom: 10,
-		marginTop: 10,
-		marginLeft:20,
-		marginRight:20
 	},
 	wrappingView:{
 		flexDirection:'row',
@@ -54,25 +40,14 @@ const styles = StyleSheet.create({
 		backgroundColor: 'lightgrey',
 		padding: 10,
 	},
-	Scroll2:{
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'flex-start',
-		backgroundColor: 'lightgrey',
-		padding: 10,
-	},
 	notintView:{
 		flexDirection: 'row', 
 		alignItems: 'flex-end',
 		justifyContent: 'flex-end',
 		backgroundColor: '#f5fcff',
 	},
-	text: {
+	text: { //si
 		fontSize: 17,
-	},
-	textQuest: {
-		fontSize: 17,
-		marginLeft:5,
 	},
 	row: {
 		marginLeft: 10,
@@ -81,7 +56,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 	},
-	row2: {
+	row2: { //si
 		marginLeft: 10,
 		flexDirection: 'row', 
 		justifyContent: 'flex-start',
@@ -92,7 +67,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		paddingBottom: 10,
 	},
-    button: {
+    button: { //si
 		alignSelf: 'stretch',
 		marginBottom: 25,
 		borderRadius: 10,
@@ -121,62 +96,49 @@ const styles = StyleSheet.create({
 		width: 300,
 		margin: 5,
 	},
-	textQuestions: {
-		fontWeight: 'bold',
-		fontSize: 15,
-		color: 'black',
-		marginTop: 10
-	},
 	underlinedText: {
 		fontSize: 15,
 		color: 'red',
 		textDecorationLine: 'underline',
 	},
-	radioTitle: {
-		fontWeight: 'bold',
-	},
-	TextMyname: {
+	TextMyname: { //si
 		fontWeight: 'bold',
 		fontSize: 30,
 		margin: 10,
 	},
-	myPicStyle:{
-		maxHeight:200, 
-		maxWidth: 350,
-	},
-	constrPersonal: {
+	constrPersonal: { //si
 		justifyContent: 'flex-start',
 		alignItems: 'baseline',
 		backgroundColor: '#f5fcff',
 		flexDirection: 'row'
 	},
-	infoContainer:{
+	infoContainer:{  //si
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: 'lightgrey',
 		padding: 5
 	},
-	infoProfile:{
+	infoProfile:{ //si
 		flex: 1,
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		backgroundColor: '#f5fcff',
 		padding: 5
 	},
-	infoTextTitle:{
+	infoTextTitle:{ //si
 		fontWeight: 'bold',
 		marginTop: 10,
 		fontSize: 22,
 	},
-	infoText:{
+	infoText:{ //si
 		fontSize: 17,
 	},
-	infoText2:{
+	infoText2:{ //si
 		fontSize: 17,
 		margin: 2,
 	},
-    edittext: {
+    edittext: { //si
 		fontSize:25,
 		color: 'white'
 	},
@@ -184,11 +146,6 @@ const styles = StyleSheet.create({
 		fontSize:18,
 		color: 'black',
 		backgroundColor: 'lightgrey'
-	},
-	buttonTextLike: {
-		color: 'white',
-		fontSize: 20,
-		alignSelf: 'center'
 	},
 	interestedbutton:{
 		borderRadius: 5,
@@ -207,6 +164,25 @@ const styles = StyleSheet.create({
 		marginLeft: 190,
 		justifyContent: 'center',
 		backgroundColor:'#ff6666',
+	},
+	divider:{ //si
+		height: 2, 
+		backgroundColor: 'black'
+	},
+	tabIconStyle:{ //si
+		width: 20,
+		height: 20,
+	},
+	infoIcon:{ //si
+		width: 30,
+		height: 30,
+	},
+	image:{
+		width:100,
+		height:100,
+	},
+	newestUsersComponent :{
+		height:200,
 	},
 }); 
 

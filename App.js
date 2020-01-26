@@ -6,6 +6,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 
 import {Provider} from 'unstated'
 
+import styles from './style'
 import Welcome_Screen from './screens/Welcome_Screen'
 import Login_Screen from './screens/Login_Screen'
 import SignUp_Screen from './screens/SignUp_Screen'
@@ -96,19 +97,22 @@ const MainApp = createBottomTabNavigator(
           return (
             <Image
               source={ require('./assets/home_icon.png') }
-              style={{ width: 20, height: 20, }} />
+              style={styles.tabIconStyle}
+			/>
           );
         } else if (routeName === 'PersonalProfile'){
           return (
             <Image
               source={ require('./assets/profile_icon.jpg') }
-              style={{ width: 20, height: 20 }} />
+              style={styles.tabIconStyle}
+			/>
           );
         } else {
           return (
             <Image
               source={ require('./assets/search_icon.jpg') }
-              style={{ width: 20, height: 20 }} />
+              style={styles.tabIconStyle}
+			/>
           );
         }
       },
