@@ -18,6 +18,7 @@ import Settings_Screen  from './screens/Settings_Screen'
 import Search_Screen from './screens/Search_Screen'
 import EditInfo_Screen from './screens/EditInfo_Screen'
 import EditSearchConst_Screen from './screens/EditSearchConst_Screen'
+import Map_Screen from './screens/Map_Screen'
 
 
 const Welcome = createStackNavigator(
@@ -72,6 +73,7 @@ const PersonalProfileTab = createStackNavigator(
 const SearchTab = createStackNavigator(
   {
     Search: Search_Screen,
+    Map: Map_Screen,
   },
   {
     defaultNavigationOptions: {
@@ -87,7 +89,7 @@ const MainApp = createBottomTabNavigator(
   {
     Home: HomeTab,
     PersonalProfile: PersonalProfileTab,
-    Search: SearchTab
+    Search: SearchTab,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

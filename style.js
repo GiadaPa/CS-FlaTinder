@@ -40,6 +40,13 @@ const styles = StyleSheet.create({
 		backgroundColor: 'lightgrey',
 		padding: 10,
 	},
+	ScrollSave:{
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
+		backgroundColor: 'lightgrey',
+		padding: 50,
+	},
 	notintView:{
 		flexDirection: 'row', 
 		alignItems: 'flex-end',
@@ -126,6 +133,12 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f5fcff',
 		padding: 5
 	},
+	noUserText:{
+		fontWeight: 'bold',
+		marginTop: 40,
+		fontSize: 22,
+		color: 'red',
+	},
 	infoTextTitle:{ //si
 		fontWeight: 'bold',
 		marginTop: 10,
@@ -147,15 +160,31 @@ const styles = StyleSheet.create({
 		color: 'black',
 		backgroundColor: 'lightgrey'
 	},
+    savedUsers: {
+		fontSize: 22,
+		color: 'black',
+		backgroundColor: 'lightgrey',
+		padding:10
+	},
 	interestedbutton:{
 		borderRadius: 5,
 		height: 40,
 		width: 120,
-		marginLeft: 15,
+		marginLeft: 5,
 		marginTop: 10,
 		justifyContent: 'space-evenly',
 		alignItems: 'stretch',
 		backgroundColor:'lightgreen',
+	},
+	viewOnMap:{
+		borderRadius: 5,
+		height: 40,
+		width: 135,
+		marginLeft: 10,
+		marginTop: 10,
+		justifyContent: 'space-evenly',
+		alignItems: 'stretch',
+		backgroundColor:'lightblue',
 	},
 	notintbutton:{
 		borderRadius: 5,

@@ -6,6 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import * as MailComposer from 'expo-mail-composer';
+import * as Location from 'expo-location';
 
 export default class StateContainer extends PersistContainer{
 	constructor(props){
@@ -162,10 +163,26 @@ export default class StateContainer extends PersistContainer{
 
 	sendEmail = (user) => {
 		MailComposer.composeAsync({
-			recipients:[user.info.email],  //sono i destinatari o chi la manda?
+			//adesso non funziona più però, durante la presentazione funzionava
+			recipients:[user.info.email],  //per i destinatari, clicco su send-email e nella app per le email viene inserita l'indirizzo email dello user che sto guardando
 			subject:"Request for flat sharing",
 			})
 	}
+
+	getLocation = async (user) => {
+		let { status } = await Permissions.askAsync(Permissions.LOCATION);
+		if (status !== 'granted') {
+		  this.setState({
+			errorMessage: 'Permission to access location was denied',
+		  });
+		}
+	
+		//invece che Bolzano c'è da chiamare user.info.city
+		let location = (await Location.geocodeAsync("Bolzano"))[0];
+		console.log("---------------------location is", location)
+		return location
+	}
+
 
 	saveUser = (user) => {
 		var newSavedUsers = []
