@@ -1,6 +1,6 @@
 //EditInfo_Screen.js
 import React from 'react';
-import {View, Text, TouchableOpacity, Button, TextInput, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, KeyboardAvoidingView, TextInput, ScrollView} from 'react-native';
 import {Subscribe} from 'unstated'
 import RadioGroup, {Radio} from "react-native-radio-input";
 
@@ -14,7 +14,9 @@ const EditInfo_Screen = props => {
 			{
 				container =>
 				(
-                    <View style={styles.MainContainer}>
+					<KeyboardAvoidingView style={styles.MainContainer}
+						behavior='position'
+					>
 					<ScrollView>
 					<View style = {styles.questionnaireView}>
 						<Text style = {styles.text}>Edit username</Text>
@@ -97,7 +99,7 @@ const EditInfo_Screen = props => {
 					>
 						<Text style={styles.buttonText}>SAVE CHANGES</Text>
 					</TouchableOpacity>
-                    </View>
+                    </KeyboardAvoidingView>
 				)
 			}
 		</Subscribe>

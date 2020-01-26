@@ -23,7 +23,7 @@ const Search_Screen = props => {
 					checkIfSaved = {container.checkIfSaved(container.getBestFittingUsers()[container.getNextMate()])}
 					sendEmail = {() => container.sendEmail(container.getBestFittingUsers()[container.getNextMate()])}
 					likeAlert = {() => container.likeAlert(container.getBestFittingUsers()[container.getNextMate()])}
-					saveUser = {() => container.saveUser(container.getBestFittingUsers()[container.getNextMate()])}
+					saveUser = {() => container.saveUser(container.getBestFittingUsers()[container.getNextMate()])}	
 				/>
 				<View style={styles.notintView}>
 					<TouchableHighlight
@@ -35,6 +35,13 @@ const Search_Screen = props => {
 						}
 					>
 						<Text style={styles.buttonText}>NOT INTERESTED</Text>
+					</TouchableHighlight>
+					
+					<TouchableHighlight
+						style ={styles.viewOnMap}
+						onPress={() => props.navigation.navigate('Map')}
+					>
+						<Text style={styles.buttonText}>VIEW ON MAP</Text>
 					</TouchableHighlight>
 				</View>
 			</View>}
