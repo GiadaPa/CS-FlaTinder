@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, KeyboardAvoidingView, Text, TouchableOpacity, Button, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, Button, TextInput} from 'react-native';
 import {Subscribe} from 'unstated'
 
 import StateContainer from '../StateContainer'
@@ -12,8 +12,7 @@ const Login_Screen = props => {
 				container =>
 				(
 				
-					<KeyboardAvoidingView style={styles.MainContainer}
-						behavior='position'>
+					<View style={styles.MainContainer}>
 					<Text style = {styles.text}>Insert username</Text>
 					<TextInput
 						style = {styles.textInput}
@@ -50,7 +49,7 @@ const Login_Screen = props => {
 					>
 						<Text style={styles.underlinedText}>Not a user? Register for free!</Text>
 					</TouchableOpacity>
-					</KeyboardAvoidingView>
+					</View>
 				)
 			}
 		</Subscribe>

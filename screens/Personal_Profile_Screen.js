@@ -20,7 +20,7 @@ const Personal_Profile_Screen = props => {
 					</View>
 				)
 			}
-		</Subscribe>
+		</Subscribe> 
     )
 }
 

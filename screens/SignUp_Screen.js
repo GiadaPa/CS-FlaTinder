@@ -1,6 +1,6 @@
 //SignUp_Screen.js
 import React from 'react';
-import {View, KeyboardAvoidingView , Text, TouchableOpacity, Button, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, Button, TextInput} from 'react-native';
 import {Subscribe} from 'unstated'
 import RadioGroup, {Radio} from "react-native-radio-input";
 
@@ -14,9 +14,7 @@ const SignUp_Screen = props => {
 			{
 				container =>
 				(
-				
-					<KeyboardAvoidingView  style={styles.AvoidingView}
-						behavior='position'>
+					<View style={styles.MainContainer}>
 					<View style = {styles.questionnaireView}>
 						<Text style = {styles.text}>Insert new username</Text>
 						<TextInput
@@ -66,7 +64,6 @@ const SignUp_Screen = props => {
 						<TextInput
 							style = {styles.textInput}
 							clearButtonMode={'while-editing'}
-							autoCapitalize={'none'}
 							onChangeText = {(email) => container.setTempInfo(email, "email")}
 						>
 						</TextInput>						
@@ -94,7 +91,7 @@ const SignUp_Screen = props => {
 					>
 						<Text style={styles.buttonText}>Sign up</Text>
 					</TouchableOpacity>
-					</KeyboardAvoidingView>
+					</View>
 				)
 			}
 		</Subscribe>

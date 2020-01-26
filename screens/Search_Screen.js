@@ -20,6 +20,7 @@ const Search_Screen = props => {
 			<View>
 				<Search_Component 
 					user = {container.getBestFittingUsers()[container.getNextMate()]}
+					checkIfSaved = {container.checkIfSaved(container.getBestFittingUsers()[container.getNextMate()])}
 					sendEmail = {() => container.sendEmail(container.getBestFittingUsers()[container.getNextMate()])}
 					likeAlert = {() => container.likeAlert(container.getBestFittingUsers()[container.getNextMate()])}
 					saveUser = {() => container.saveUser(container.getBestFittingUsers()[container.getNextMate()])}
@@ -33,7 +34,7 @@ const Search_Screen = props => {
 						}
 						}
 					>
-						<Text style={styles.buttonTextLike}>NOT INTERESTED</Text>
+						<Text style={styles.buttonText}>NOT INTERESTED</Text>
 					</TouchableHighlight>
 				</View>
 			</View>}
