@@ -156,8 +156,9 @@ const styles = StyleSheet.create({
 		color: 'white'
 	},
     joiningUsers: {
-		fontSize:18,
-		color: 'black',
+		fontSize:20,
+		fontWeight: 'bold',
+		color: 'red',
 		backgroundColor: 'lightgrey'
 	},
     savedUsers: {
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 		height: 40,
 		width: 120,
-		marginLeft: 5,
+		marginLeft: 10,
 		marginTop: 10,
 		justifyContent: 'space-evenly',
 		alignItems: 'stretch',
@@ -181,6 +182,7 @@ const styles = StyleSheet.create({
 		height: 40,
 		width: 135,
 		marginLeft: 10,
+		marginRight:20,
 		marginTop: 10,
 		justifyContent: 'space-evenly',
 		alignItems: 'stretch',
