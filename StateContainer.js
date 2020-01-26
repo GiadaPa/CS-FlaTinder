@@ -173,9 +173,10 @@ export default class StateContainer extends PersistContainer{
 		var different = true
 		for(var i=0; i<this.state.users[this.state.loggedInUser].savedUsers.length; i++)
 		{
-			if(this.state.users[this.state.loggedInUser].savedUsers[i].username == user.username)
+			if(this.state.users[this.state.loggedInUser].savedUsers[i].username.toUpperCase() == user.username.toUpperCase())
 			{
-				different = false
+				different = false //se giò saved
+				
 			}
 		}
 		if(different)
@@ -183,7 +184,7 @@ export default class StateContainer extends PersistContainer{
 			newSavedUsers = [...this.state.users[this.state.loggedInUser].savedUsers, user]
 			for(var i=0; i<this.state.users.length; i++)
 			{
-				if(this.state.users[this.state.loggedInUser].username == this.state.users[i].username)
+				if(this.state.users[this.state.loggedInUser].username.toUpperCase() == this.state.users[i].username.toUpperCase())
 				{
 					newUsers = [...newUsers, {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.users[this.state.loggedInUser].info, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser].likes, firstScore: this.state.users[this.state.loggedInUser].firstScore, secondScore: this.state.users[this.state.loggedInUser].secondScore, savedUsers: newSavedUsers}]
 				}
@@ -195,9 +196,28 @@ export default class StateContainer extends PersistContainer{
 			this.setState({users: newUsers})
 			alert('Saved')
 		}
-		else
+		else //se già saved
 		{
-			alert('Already saved')
+			for(i=0; i<this.state.users[this.state.loggedInUser].savedUsers.length; i++)
+			{
+				if(this.state.users[this.state.loggedInUser].savedUsers[i].username.toUpperCase() != user.username.toUpperCase())
+				{
+					newSavedUsers = [...newSavedUsers, this.state.users[this.state.loggedInUser].savedUsers[i]]
+				}
+			}
+			for(var i=0; i<this.state.users.length; i++)
+			{
+				if(this.state.users[this.state.loggedInUser].username.toUpperCase() == this.state.users[i].username.toUpperCase())
+				{
+					newUsers = [...newUsers, {username: this.state.users[this.state.loggedInUser].username, password: this.state.users[this.state.loggedInUser].password, info: this.state.users[this.state.loggedInUser].info, constraints: this.state.users[this.state.loggedInUser].constraints, image: this.state.users[this.state.loggedInUser].image, likes: this.state.users[this.state.loggedInUser].likes, firstScore: this.state.users[this.state.loggedInUser].firstScore, secondScore: this.state.users[this.state.loggedInUser].secondScore, savedUsers: newSavedUsers}]
+				}
+				else
+				{
+					newUsers = [...newUsers, this.state.users[i]]
+				}
+			}
+			this.setState({users: newUsers})
+			alert('Removed')
 		}
 	}
 
@@ -207,7 +227,7 @@ export default class StateContainer extends PersistContainer{
 		var newUsers = []
 		for(var i=0; i<this.state.users.length; i++)
 		{
-			if(user.username == this.state.users[i].username)
+			if(user.username.toUpperCase() == this.state.users[i].username.toUpperCase())
 			{
 				const newLike = {username: this.state.users[this.state.loggedInUser].username}
 				newLikes = [...this.state.users[i].likes, newLike]
@@ -225,7 +245,7 @@ export default class StateContainer extends PersistContainer{
 	login = () => {
 		for(var i=0; i<this.state.users.length; i++)
 		{
-			if(this.state.tempUsername == this.state.users[i].username && this.state.tempPassword == this.state.users[i].password)
+			if(this.state.tempUsername.toUpperCase() == this.state.users[i].username.toUpperCase() && this.state.tempPassword == this.state.users[i].password)
 			{
 				this.setState({loggedInUser: i, tempPassword: "", tempUsername: "", nextMate: 0})
 				return true
@@ -271,7 +291,7 @@ export default class StateContainer extends PersistContainer{
 		}
 		for(var i=0; i<this.state.users.length; i++)
 		{
-			if(this.state.tempUsername == this.state.users[i].username)
+			if(this.state.tempUsername.toUpperCase() == this.state.users[i].username.toUpperCase())
 			{
 				alert("username already exists")
 				return false
@@ -453,7 +473,7 @@ export default class StateContainer extends PersistContainer{
 		{
 			console.log(this.state.users[this.state.loggedInUser].username)
 			console.log(this.state.users[i].username)
-			if(this.state.users[this.state.loggedInUser].username != this.state.users[i].username)
+			if(this.state.users[this.state.loggedInUser].username.toUpperCase() != this.state.users[i].username.toUpperCase())
 			{
 				console.log("if")
 				orderedUsers = [...orderedUsers, this.state.users[i]]
@@ -480,6 +500,7 @@ export default class StateContainer extends PersistContainer{
 		newMate = this.state.nextMate + 1
 		if(newMate == this.state.users.length -1)
 		{
+			alert("no more mates, restarting from first")
 			newMate = 0
 		}
 		this.setState({nextMate: newMate})
@@ -488,37 +509,41 @@ export default class StateContainer extends PersistContainer{
 	getNewestUsers = () => {
 		console.log("getnewusers")
 		var newest = []
-		console.log(this.state.users.length)
 		for(var i=this.state.users.length-1; i>this.state.users.length-11 && i>=0; i--)
 		{
-			console.log("for")
-			console.log(this.state.users[i].username)
-			if(this.state.users[this.state.loggedInUser].username != this.state.users[i].username)
+			if(this.state.users[this.state.loggedInUser].username.toUpperCase() != this.state.users[i].username.toUpperCase())
 			{
-				console.log("if")
 				newest = [...newest, this.state.users[i]]
-				console.log(newest)
 			}
 		}
-		console.log(newest)
 		return newest
+	}
+	
+	checkIfSaved(user)
+	{
+		console.log("checkIfSaved")
+		for(i=0; i<this.state.users[this.state.loggedInUser].savedUsers.length; i++)
+		{
+			if(user.username.toUpperCase() == this.state.users[this.state.loggedInUser].savedUsers[i].username.toUpperCase())
+			{
+				console.log("true")
+				return true
+			}
+		}
+		console.log("false")
+		return false
 	}
 	
 	getSavedUsers = () => {
 		console.log("getsavedusers")
-		console.log(this.state.users[this.state.loggedInUser].savedUsers)
-		console.log(this.state.users[this.state.loggedInUser].savedUsers.length)	
 		return this.state.users[this.state.loggedInUser].savedUsers
 	}
 	
 	setShownUserIndex = (username) => {
-		console.log("SETSHOWNUSERINDEX")
-		console.log(username)
-		console.log(this.state.users)
 		var index = 0
 		for(var i=0; i<this.state.users.length; i++)
 		{
-			if(username == this.state.users[i].username)
+			if(username.toUpperCase() == this.state.users[i].username.toUpperCase())
 			{
 				index = i
 			}
