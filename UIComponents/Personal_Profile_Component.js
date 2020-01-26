@@ -46,14 +46,16 @@ const Personal_Profile_Component = props => (
 				<Text style={styles.infoText}> max. mates</Text> 
 			</View>
 		</View>
-		<View style = {styles.infoProfile}>
-			<Text style={styles.infoTextTitle}>Info:</Text>
-			<Text style={styles.infoText2}>    Age: {props.user.info.age}</Text>
-			<Text style={styles.infoText2}>    City: {props.user.info.city}</Text>
-			<Text style={styles.infoText2}>    Gender: {props.user.info.gender}</Text>
-			<Text style={styles.infoTextTitle}>Contact:</Text>
-			<Text style={styles.infoText2}>    Email address: {props.user.info.email}</Text>
-			<Text style={styles.infoText2}>    Phone number: {props.user.info.phone}</Text>
+		<View style={styles.wrappingView}>
+			<View style = {styles.infoProfile}>
+				<Text style={styles.infoTextTitle}>Info:</Text>
+				<Text style={styles.infoText2}>    Age: {props.user.info.age}</Text>
+				<Text style={styles.infoText2}>    City: {props.user.info.city}</Text>
+				<Text style={styles.infoText2}>    Gender: {props.user.info.gender}</Text>
+				<Text style={styles.infoTextTitle}>Contact:</Text>
+				<Text style={styles.infoText2}>    Email address: {props.user.info.email}</Text>
+				<Text style={styles.infoText2}>    Phone number: {props.user.info.phone}</Text>
+			</View>
 		</View>
 	</View>
 )

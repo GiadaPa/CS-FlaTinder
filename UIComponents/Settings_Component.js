@@ -14,7 +14,7 @@ const Settings_Component = props => (
     <Text style={styles.infoTextTitle}>WHAT IS FLATINDER?</Text>  
     <Text style={styles.infoText}>Almost everyone has struggled, at least once in their life, finding a shared house, maybe as a student, as a young worker or as an exchange student. We thought of creating an application that makes the task of searching a shared house or a new flatmate enjoyable and easy</Text>
     <Text></Text>  
-    <Divider style={{ height: 2, backgroundColor: 'black'}} />
+    <Divider style={styles.divider} />
     </View>
     <View style={styles.MainContainer}>
     <TouchableHighlight
@@ -24,7 +24,7 @@ const Settings_Component = props => (
             <View style={styles.row2}>
                 <Image 
                     source={require('../assets/infoicon.jpg')}
-                    style={{ width: 30, height: 30, }} 
+                    style={styles.infoIcon} 
                     /> 
                 <Text style={styles.edittext}> Edit personal information </Text>  
             </View>
@@ -37,7 +37,7 @@ const Settings_Component = props => (
             <View style={styles.row2}>
                 <Image
                     source={require('../assets/quest_icon.jpg')}
-                    style={{ width: 30, height: 30, }} 
+                    style={styles.infoIcon} 
                     />
                 <Text style={styles.edittext}> Edit search constraints </Text>
             </View>

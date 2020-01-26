@@ -9,48 +9,48 @@ import styles from '../style'
 
 const Newest_Users_Component = props => (
 	<View>
-	<View style = {{height: 200}}>
-		<Text style={styles.joiningUsers}>Users that joined FlaTinder recently</Text>
-		{props.users.length == 0?
-			<Text>You are the only user :( invite your friends!</Text>:
-			<ScrollView
-				horizontal={true}
-				bounces={false}
-				contentContainerStyle={{alignItems:'flex-start'}}
-			>
-			{
-				props.users.map((user, index) => (
-					<TouchableHighlight
-						key = {user.username}
-						onPress= {() => props.selectUser(user.username)}
-					>
-						<View style = {styles.Scroll}>
-							{user.image == ''?
-								(user.info.gender == 'female'?
-									<Image
-										source={require('../assets/femalepic.jpg')}
-										style = {{width:100, height:100}}
-									/>:
-									<Image
-										source={require('../assets/malepic.jpg')}
-										style = {{width:100, height:100}}
-									/>
-								):
-								(<Image
-									source={{uri: user.image}}
-									style = {{width:100, height:100}}
-								/>)
-							}
-							<Text style={styles.infoText}>{user.username}</Text>
-							<Text style={styles.infoText}>Likes: {user.likes.length}</Text>
+		<View style = {styles.newestUsersComponent}>
+			<Text style={styles.joiningUsers}>Users that joined FlaTinder recently</Text>
+			{props.users.length == 0?
+				<Text>You are the only user :( invite your friends!</Text>:
+				<ScrollView
+					horizontal={true}
+					bounces={false}
+					contentContainerStyle={{alignItems:'flex-start'}}
+				>
+				{
+					props.users.map((user, index) => (
+						<TouchableHighlight
+							key = {user.username}
+							onPress= {() => props.selectUser(user.username)}
+						>
+							<View style = {styles.Scroll}>
+								{user.image == ''?
+									(user.info.gender == 'female'?
+										<Image
+											source={require('../assets/femalepic.jpg')}
+											style = {styles.image}
+										/>:
+										<Image
+											source={require('../assets/malepic.jpg')}
+											style = {styles.image}
+										/>
+									):
+									(<Image
+										source={{uri: user.image}}
+										style = {styles.image}
+									/>)
+								}
+								<Text style={styles.infoText}>{user.username}</Text>
+								<Text style={styles.infoText}>Likes: {user.likes.length}</Text>
 							</View>
 						</TouchableHighlight>
-				))
+					))
+				}
+				</ScrollView>
 			}
-			</ScrollView>
-		}
 		</View>
-		<Divider style={{ height: 2, backgroundColor: 'black'}} />
+		<Divider style={styles.divider} />
 	</View>
 	
 )
